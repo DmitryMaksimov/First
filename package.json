@@ -1,0 +1,15 @@
+{
+  "name": "First",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.pug",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "pug": "^2.0.4"
+  }
+}

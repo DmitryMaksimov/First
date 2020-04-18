@@ -1,16 +1,30 @@
 doctype html
+
+    
 html(lang="en")
-  head
-    title= pageTitle
-    script(type='text/javascript').
-      if (foo) bar(1 + 5)
-  body
-    h1 Pug - node template engine
-    #container.col
-      if youAreUsingPug
-        p You are amazing
-      else
-        p Get on it!
-      p.
-        Pug is a terse and simple templating language with a
-        strong focus on performance and powerful features.
+    head
+        title Проспись, сынок!
+    body
+        header
+            div.wrapper
+                img(src="images/SVG/logo.svg")
+                ul
+                    li
+                        a(href="/") О нас
+                    li
+                        a(href="/") Услуги
+                    li
+                        a(href="/") Вакансии
+                    li
+                        a(href="/") Новости
+                    li
+                        a(href="/") Соглашения
+                form:get
+                    input(type="button", value="Войти").login
+                    input(type="button", value="Зарегистрироваться").register
+
+                    
+        main
+            div.wrapper
+        footer
+
