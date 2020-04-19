@@ -1,0 +1,42 @@
+doctype html
+
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Проспись, сынок!
+    block style
+      link(rel="stylesheet", href="CSS/reset.css")
+      link(rel="stylesheet", href="SCSS/style.scss")
+      link(rel="stylesheet", href="SCSS/header_style.scss")
+    block scripts
+<!--      script(src='/jquery.js') -->
+  body
+    block header
+      div.header__wrapper
+        div.logo
+          a(url="/")
+            img(src="./images/SVG/logo.svg")
+        nav
+          ul.header_nav
+            li.header__item
+              a.header__link(href="/") О нас
+            li.header__item
+              a.header__link(href="/") Услуги
+                img(src="./images/SVG/expand_more.svg", alt="Узнать").services
+            li.header__item
+              a.header__link(href="/") Вакансии
+            li.header__item
+              a.header__link(href="/") Новости
+            li.header__item
+              a.header__link(href="/") Соглашения
+                img(src="./images/SVG/expand_more.svg", alt="Узнать").services
+            li.header__item
+              a.header__link(href="/") Войти
+            li.header__item
+              a.header__link(href="/") Зарегистрироваться      
+    block content
+    block foot
+      #footer
+        p some footer content
