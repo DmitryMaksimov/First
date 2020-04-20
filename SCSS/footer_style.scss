@@ -1,0 +1,70 @@
+@import "variables.scss";
+
+footer {
+  /*
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  */
+  width: 100%;
+
+  font-size: 14px;
+
+  color: rgba(31, 32, 65, 0.75);
+
+  background: #FFFFFF;
+  box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
+  border-top: 1px solid rgba(31, 32, 65, 0.25);
+}
+
+.footer_wrapper {
+  width: $content_width;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.footer__wrapper:after {
+  content:"";
+  display:inline-block;
+  height:100%;
+  vertical-align:middle;
+}
+
+@mixin footer_column {
+  display: inline-block;
+  vertical-align: middle;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  margin-right: 40px;
+}
+
+.footer_column_1 {
+  @include footer_column;
+  width: 260px;
+}
+
+.footer_column_2 {
+  @include footer_column;
+  width: 160px;
+}
+
+.footer_column_3 {
+  @include footer_column;
+  width: 160px;
+}
+
+.footer_column_4 {
+  @include footer_column;
+  width: 160px;
+}
+
+.footer_column_5 {
+  @include footer_column;
+  width: 260px;
+  margin-right: 0;
+}
