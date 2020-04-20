@@ -10,33 +10,79 @@ html
       link(rel="stylesheet", href="CSS/reset.css")
       link(rel="stylesheet", href="SCSS/style.scss")
       link(rel="stylesheet", href="SCSS/header_style.scss")
+      link(rel="stylesheet", href="SCSS/footer_style.scss")
     block scripts
-<!--      script(src='/jquery.js') -->
+      script window.onerror = function(msg, url, lineNo, columnNo, error) { alert(error); return false;}
+      script(type="text/javascript" src='scripts/jquery-3.5.0.min.js')
+      script(type="text/javascript" src='scripts/template.js')
   body
     block header
-      div.header__wrapper
-        div.logo
-          a(url="/")
-            img(src="./images/SVG/logo.svg")
-        nav
-          ul.header_nav
-            li.header__item
-              a.header__link(href="/") О нас
-            li.header__item
-              a.header__link(href="/") Услуги
-                img(src="./images/SVG/expand_more.svg", alt="Узнать").services
-            li.header__item
-              a.header__link(href="/") Вакансии
-            li.header__item
-              a.header__link(href="/") Новости
-            li.header__item
-              a.header__link(href="/") Соглашения
-                img(src="./images/SVG/expand_more.svg", alt="Узнать").services
-            li.header__item
-              a.header__link(href="/") Войти
-            li.header__item
-              a.header__link(href="/") Зарегистрироваться      
-    block content
+      header
+        div.header_wrapper
+          nav.menu__wrapper
+            span.header__logo
+            img(src="images/SVG/logo.svg", alt="")
+              
+            
+            mixin nav_item(Text, Href, expand = false, add_clName = 'header__item')
+              span.right_menu2
+              a(class=add_clName, href=Href)= Text
+                  if expand
+                    img.menu_expand(src="./images/SVG/expand_more.svg", alt="Узнать").services
+            span.right_menu
+              +nav_item("О нас", "/")
+              +nav_item("Услуги", "/", true)
+              +nav_item("Вакансии", "/")
+              +nav_item("Новости", "/")
+              +nav_item("Соглашения", "/", true)
+              +nav_item("Войти", "/", false,'header__item header__login')
+              +nav_item("Зарегистрироваться", "/", false, "header__item header__item_nomargin header__register")
+              span.right_menu2
+    div.content_wrapper
+      block content
+        p some content
     block foot
-      #footer
-        p some footer content
+      footer
+        div.footer_wrapper
+          span.footer_column_1
+            div.footer_column_item_text
+              img.footer_logo(src='images/SVG/logo.svg', alt="")
+              p Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+          span.footer_column_2
+            ul.footer_list
+              li.footer_list_first_child Навигация
+              li
+                a(href="/") О нас
+              li
+                a(href="/") Новости
+              li
+                a(href="/") Служба поддержки
+              li
+                a(href="/") Услуги
+          span.footer_column_3
+            ul.footer_list
+              li.footer_list_first_child О нас
+              li
+                a(href="/") О сервисе
+              li
+                a(href="/") Наша команда
+              li
+                a(href="/") Вакансии
+              li
+                a(href="/") Инвесторы
+          span.footer_column_4
+            ul.footer_list
+              li.footer_list_first_child Служба поддержки
+              li
+                a(href="/") Соглашения
+              li
+                a(href="/") Сообщества
+              li
+                a(href="/") Связь с нами
+          span.footer_column_5
+            ul.footer_list
+              li.footer_list_first_child Подписка
+              li.footer_column_item_text Получайте специальные предложения и новости сервиса
+              li e-mail
+    block copyright
+      #copyright some copyrights

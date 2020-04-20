@@ -33,14 +33,25 @@ footer {
   vertical-align:middle;
 }
 
+.footer_logo {
+  padding-bottom: 19px;
+}
+
 @mixin footer_column {
+  line-height: 38.5px;
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
 
   padding-top: 50px;
   padding-bottom: 50px;
 
   margin-right: 40px;
+}
+
+.footer_list_first_child {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .footer_column_1 {
@@ -67,4 +78,26 @@ footer {
   @include footer_column;
   width: 260px;
   margin-right: 0;
+}
+
+.footer_column_item_text {
+  line-height: 24.5px;
+  padding-top: 6px;
+}
+
+
+
+/* Ссылки */
+
+@mixin footer__links {
+  text-decoration: none;
+}
+
+footer a {
+  @include footer__links;
+} 
+
+footer a:hover, footer a:active, footer a:focus {
+  @include footer__links;
+  opacity: 0.5;
 }
