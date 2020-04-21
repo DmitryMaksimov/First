@@ -7,9 +7,16 @@ footer {
   background: #FFFFFF;
   box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
   border-top: 1px solid rgba(31, 32, 65, 0.25);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: start;
 }
 
 .footer_wrapper {
+  @include header__debug;
+
   width: $content_width;
   margin-left: auto;
   margin-right: auto;
@@ -17,13 +24,10 @@ footer {
   padding-top: 43px;
   padding-bottom: 40px;
 
-}
-
-.footer__wrapper:after {
-  content:"";
-  display:inline-block;
-  height:100%;
-  vertical-align:middle;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
 }
 
 .footer_logo {
@@ -31,14 +35,12 @@ footer {
 }
 
 @mixin footer_column {
+  @include header__debug;
   line-height: 38.5px;
   display: inline-block;
-  vertical-align: top;
 
   padding-top: 50px;
   padding-bottom: 50px;
-
-  margin-right: 40px;
 }
 
 .footer_list_first_child {

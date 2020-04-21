@@ -1,5 +1,11 @@
 $header_height: 70px;
 $copyright_height: 70px;
-$debug_header: false;
+$debug_header: true;
 $content_width: 1160px;
 
+
+@mixin header__debug {
+  @if $debug_header {
+    border: 1px  solid #ccc; 
+  }
+}
