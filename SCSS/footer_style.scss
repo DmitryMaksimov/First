@@ -1,15 +1,7 @@
 @import "variables.scss";
 
 footer {
-  /*
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  */
-  width: 100%;
-
   font-size: 14px;
-
   color: rgba(31, 32, 65, 0.75);
 
   background: #FFFFFF;
@@ -22,8 +14,9 @@ footer {
   margin-left: auto;
   margin-right: auto;
 
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 43px;
+  padding-bottom: 40px;
+
 }
 
 .footer__wrapper:after {
@@ -100,4 +93,48 @@ footer a {
 footer a:hover, footer a:active, footer a:focus {
   @include footer__links;
   opacity: 0.5;
+}
+
+
+.copyright_valign {
+  content: "";
+  width: 0;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#copyright_span {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: rgba(31, 32, 65, 0.75);
+  vertical-align: middle;
+}
+
+.copyright_wrapper {
+  width: $content_width;
+  height: $copyright_height;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.copyright_right {
+  height: 100%;
+  float: right;
+}
+
+.copy_icons {
+  height: 100%;
+  font-family: 'Font Awesome 5 Brands';
+  font-size: 24px;
+  vertical-align: middle;
+
+  background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #BC9CFF;
+  margin-left: 23px;
 }

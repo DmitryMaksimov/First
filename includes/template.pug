@@ -18,26 +18,25 @@ html
   body
     block header
       header
-        div.header_wrapper
-          nav.menu__wrapper
-            span.header__logo
-            img(src="images/SVG/logo.svg", alt="")
-              
+        nav.menu__wrapper
+          span.header__logo
+          img(src="images/SVG/logo.svg", alt="")
             
-            mixin nav_item(Text, Href, expand = false, add_clName = 'header__item')
-              span.right_menu2
-              a(class=add_clName, href=Href)= Text
-                  if expand
-                    img.menu_expand(src="./images/SVG/expand_more.svg", alt="Узнать").services
-            span.right_menu
-              +nav_item("О нас", "/")
-              +nav_item("Услуги", "/", true)
-              +nav_item("Вакансии", "/")
-              +nav_item("Новости", "/")
-              +nav_item("Соглашения", "/", true)
-              +nav_item("Войти", "/", false,'header__item header__login')
-              +nav_item("Зарегистрироваться", "/", false, "header__item header__item_nomargin header__register")
-              span.right_menu2
+          
+          mixin nav_item(Text, Href, expand = false, add_clName = 'header__item')
+            span.right_menu2
+            a(class=add_clName, href=Href)= Text
+                if expand
+                  img.menu_expand(src="./images/SVG/expand_more.svg", alt="Узнать").services
+          span.right_menu
+            +nav_item("О нас", "/")
+            +nav_item("Услуги", "/", true)
+            +nav_item("Вакансии", "/")
+            +nav_item("Новости", "/")
+            +nav_item("Соглашения", "/", true)
+            +nav_item("Войти", "/", false,'header__item header__login')
+            +nav_item("Зарегистрироваться", "/", false, "header__item header__item_nomargin header__register")
+            span.right_menu2
     div.content_wrapper
       block content
         p some content
@@ -83,6 +82,18 @@ html
             ul.footer_list
               li.footer_list_first_child Подписка
               li.footer_column_item_text Получайте специальные предложения и новости сервиса
-              li e-mail
+              li
+                form(action="", method="get")#subscribe
+                  input(type="text", alt="e-mail")#email
+                  a(onclick="document.querySelector('#subscribe').submit(); return false;") 
+                  input(type="submit", value="sadf")
     block copyright
-      #copyright some copyrights
+      #copyright
+        div.copyright_wrapper
+          span.copyright_valign
+          span#copyright_span Copyright © 2018 Toxin отель. Все права зачищены.
+          span.copyright_right
+            span.copyright_valign
+            span.copy_icons 
+            span.copy_icons 
+            span.copy_icons 
