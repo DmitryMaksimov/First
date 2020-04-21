@@ -1,22 +1,12 @@
 /* Header styles */
 @import "variables";
 
-
-@mixin header__debug {
-  @if $debug_header {
-    border: 1px  solid #ccc; 
-  }
-}
-
-
 /* Menu styles */
 
 header {
   position: fixed;
   top: 0;
   width: 100%;
-
-  height: auto;
 
   display: flex;
   flex-wrap: wrap;

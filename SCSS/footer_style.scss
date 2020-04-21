@@ -1,17 +1,14 @@
 @import "variables.scss";
 
 footer {
+  width: 100%;
+
   font-size: 14px;
   color: rgba(31, 32, 65, 0.75);
 
   background: #FFFFFF;
   box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
   border-top: 1px solid rgba(31, 32, 65, 0.25);
-
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: start;
 }
 
 .footer_wrapper {
@@ -97,13 +94,22 @@ footer a:hover, footer a:active, footer a:focus {
   opacity: 0.5;
 }
 
+#copyright {
+  width: 100%;
+}
 
-.copyright_valign {
-  content: "";
-  width: 0;
-  height: 100%;
-  display: inline-block;
-  vertical-align: middle;
+.copyright_wrapper {
+  width: $content_width;
+  min-height: $copyright_height;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+ 
 }
 
 #copyright_span {
@@ -113,19 +119,6 @@ footer a:hover, footer a:active, footer a:focus {
   font-size: 14px;
   color: rgba(31, 32, 65, 0.75);
   vertical-align: middle;
-}
-
-.copyright_wrapper {
-  width: $content_width;
-  height: $copyright_height;
-
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.copyright_right {
-  height: 100%;
-  float: right;
 }
 
 .copy_icons {
@@ -138,5 +131,5 @@ footer a:hover, footer a:active, footer a:focus {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #BC9CFF;
-  margin-left: 23px;
+  padding-left: 23px;
 }

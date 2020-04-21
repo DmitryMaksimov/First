@@ -67,11 +67,14 @@ body {
   font-style: normal;
   font-weight: normal;
 	font-size: 12px;
-	
+  
+  display: inline-block;
 	height: 100%;
 }
 
-content {
+#content {
+  width: 100%;
+
 	background: #FFFFFF;
 }
 
@@ -80,14 +83,10 @@ content {
 	width: $content_width;
   margin-left: auto;
 	margin-right: auto;
-	
+
 }
 
 #subscribe {
-}
-
-input:parent {
-  border: 1px solid black;
 }
 
 #subscribe a {
