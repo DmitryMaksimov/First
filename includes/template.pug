@@ -5,7 +5,7 @@ html
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Проспись, сынок!
+    title Отельные взгляды
     block style
       link(rel="stylesheet", href="CSS/reset.css")
       link(rel="stylesheet", href="SCSS/style.scss")
@@ -20,23 +20,19 @@ html
       header
         nav.menu__wrapper
           span.header__logo
-          img(src="images/SVG/logo.svg", alt="")
-            
+            img(src="images/SVG/logo.svg", alt="")
           
           mixin nav_item(Text, Href, expand = false, add_clName = 'header__item')
-            span.right_menu2
             a(class=add_clName, href=Href)= Text
                 if expand
                   img.menu_expand(src="./images/SVG/expand_more.svg", alt="Узнать").services
-          span.right_menu
-            +nav_item("О нас", "/")
-            +nav_item("Услуги", "/", true)
-            +nav_item("Вакансии", "/")
-            +nav_item("Новости", "/")
-            +nav_item("Соглашения", "/", true)
-            +nav_item("Войти", "/", false,'header__item header__login')
-            +nav_item("Зарегистрироваться", "/", false, "header__item header__item_nomargin header__register")
-            span.right_menu2
+          +nav_item("О нас", "/", false, 'header__item push_right')
+          +nav_item("Услуги", "/", true)
+          +nav_item("Вакансии", "/")
+          +nav_item("Новости", "/")
+          +nav_item("Соглашения", "/", true)
+          +nav_item("Войти", "/", false,'header__item header__login')
+          +nav_item("Зарегистрироваться", "/", false, "header__item header__item_nomargin header__register")
     div.content_wrapper
       block content
         p some content

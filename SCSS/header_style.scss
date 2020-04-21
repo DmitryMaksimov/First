@@ -1,80 +1,86 @@
 /* Header styles */
 @import "variables";
 
+
+@mixin header__debug {
+  @if $debug_header {
+    border: 1px  solid #ccc; 
+  }
+}
+
+
+/* Menu styles */
+
 header {
   position: fixed;
   top: 0;
   width: 100%;
+
+  height: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: start;
+
   background-color: white;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+
 }
 
 .menu__wrapper {
+  @include header__debug;
+
   margin-left: auto;
   margin-right: auto;
   width: $content_width;
-}
 
-/*
-.menu__wrapper:after {
-  content:"";
-  display:inline-block;
-  height:100%;
-  vertical-align:middle;
-}
-*/
+  min-height: $header_height;
 
-/* Menu styles */
-
-@mixin header__debug {
-  @if $debug_header {
-    border-right:1px  solid #ccc; 
-  }
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
 }
 
 .header__logo {
-  display: inline-block;
-  vertical-align: middle;
-  height: $header_height;
   @include header__debug;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
 }
+
+.push_right {
+  margin-left: auto;
+}
+
 
 .header__logo_img {
   width: 106px;
   height: 40px;
 }
 
-.right_menu {
-  vertical-align: middle;
-  float: right;
-  height: 100%;
-  @include header__debug;
-}
-
-.right_menu2 {
-  display: inline-block;
-  vertical-align: middle;
-  height: $header_height;
-  @include header__debug;
-}
-
 /* Navigation styles */
 
-/*
-.header__ul {
-  display: flex;
-  flex-wrap: wrap;
-}
-*/
-
 .header__item {
+  @include header__debug;
+
   margin-right: 4px;
   color: rgba(31, 32, 65, 0.5);
 
-  vertical-align: middle;
   padding: 8px;
   text-align: center;
   font-size: 14px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .header__item_nomargin {
@@ -83,7 +89,7 @@ header {
 
 .menu_expand {
   padding-left: 7px;
-  padding-right: 5px;
+  padding-right: 6px;
 }
 
 .header__login {
@@ -97,9 +103,9 @@ header {
   color: #BC9CFF;
   text-transform: uppercase;
 
-  padding: 7px;
-  padding-left: 18px;
-  padding-right: 18px;
+  padding: 8px;
+  padding-left: 19px;
+  padding-right: 19px;
 
   margin-left: 8px;
 }
@@ -115,7 +121,7 @@ header {
   color: #FFFFFF;
   text-transform: uppercase;
 
-  padding: 7px;
+  padding: 8px;
   padding-left: 18px;
   padding-right: 18px;
 
