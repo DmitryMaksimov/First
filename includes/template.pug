@@ -83,10 +83,10 @@ html
               li.footer_list_first_child Подписка
               li.footer_column_item_text Получайте специальные предложения и новости сервиса
               li
-                form(action="", method="get")#subscribe
-                  input(type="text", alt="e-mail")#email
-                  a(onclick="document.querySelector('#subscribe').submit(); return false;") 
-                  input(type="submit", value="sadf")
+                form(method="get")#subscribe
+                  span
+                    input(type="text", alt="e-mail" name="email")#email
+                    a(href="", onclick="document.querySelector('#subscribe').submit()") 
     block copyright
       #copyright
         div.copyright_wrapper
