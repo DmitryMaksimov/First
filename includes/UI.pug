@@ -1,7 +1,5 @@
-mixin double_slider(limit_min, limit_max, ondrag = null, id_prefix="", min=limit_min, max=limit_max)
-  div(onchange=ondrag, ondragstart="return false;", limit_minimum=limit_min, limit_maximum=limit_max).double_slider__container
-    input(type='hidden', id=id_prefix+'minimum', value=min)
-    input(type='hidden', id=id_prefix+'maximum', value=max)
+mixin double_slider(min, max, ondrag = null, min_default=min, max_default=max)
+  div(onchange=ondrag, ondragstart="return false;", minimum=min, maximum=max, current_min=min_default, current_max=max_default).double_slider__container
     div.double_slider__left
     div.double_slider__middle
     div.double_slider__right
