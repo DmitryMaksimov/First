@@ -26,6 +26,5 @@ window.onresize = function () {
   OnResize();
 }
 
-window.onload = function () {
-  OnResize();
-}
+window.addEventListener('load', OnResize);
+ 

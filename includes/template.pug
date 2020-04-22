@@ -1,5 +1,5 @@
 doctype html
-
+include UI.pug
 html
   head
     meta(charset="UTF-8")
@@ -11,10 +11,12 @@ html
       link(rel="stylesheet", href="SCSS/style.scss")
       link(rel="stylesheet", href="SCSS/header_style.scss")
       link(rel="stylesheet", href="SCSS/footer_style.scss")
+      link(rel="stylesheet", href="SCSS/UI.scss")
     block scripts
       script window.onerror = function(msg, url, lineNo, columnNo, error) { alert(error); return false;}
       script(type="text/javascript" src='scripts/jquery-3.5.0.min.js')
       script(type="text/javascript" src='scripts/template.js')
+      script(type="text/javascript" src='scripts/UI.js')
   body
     block header
       header
@@ -33,9 +35,10 @@ html
           +nav_item("Соглашения", "/", true)
           +nav_item("Войти", "/", false,'header__item header__login')
           +nav_item("Зарегистрироваться", "/", false, "header__item header__item_nomargin header__register")
-    div.content_wrapper
-      block content
-        p some content
+    #content
+      div.content_wrapper
+        block content
+          p some content
     block foot
       footer
         div.footer_wrapper

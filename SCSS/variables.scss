@@ -2,7 +2,9 @@ $header_height: 70px;
 $copyright_height: 70px;
 $debug_header: true;
 $content_width: 1160px;
-
+/*
+$content_width: 800px;
+*/
 
 @mixin header__debug {
   @if $debug_header {
