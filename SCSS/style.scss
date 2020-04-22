@@ -76,7 +76,7 @@ body {
 
 #content {
   width: 100%;
-	background: #FFFFFF;
+  background: #FFFFFF;
 }
 
 .content_wrapper
@@ -85,6 +85,8 @@ body {
   margin-left: auto;
 	margin-right: auto;
 
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #subscribe {
@@ -97,8 +99,8 @@ body {
 }
 
 .double_slider__container {
-  margin-top:23px;
-  margin-bottom:20px;
+  margin-top:22px;
+  margin-bottom:15px;
 }
 
 .widget_slider {
@@ -131,15 +133,38 @@ body {
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
-  line-height: 15px;
 
   margin-left: auto;
   /* identical to box height */
 
   text-align: right;
-  text-transform: uppercase;
 
   /* Dark 50% */
 
   color: rgba(31, 32, 65, 0.5);
+}
+
+.widget_footer {
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  /* identical to box height, or 117% */
+  
+  
+  /* Dark 50% */
+  
+  color: rgba(31, 32, 65, 0.5);  
+}
+
+.left_menu {
+  width: 270px;
+  margin-right: 28px;
+}
+
+content {
+  margin-left: 28px;
+
 }

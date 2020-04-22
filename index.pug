@@ -2,54 +2,50 @@ extends includes/template.pug
 
 block content
   script(type="text/javascript" src='scripts/index.js')
-  p 1 some content
-  p some content
-  p some content
-  p some content
-  div.widget_slider
-    div.widget_amount_header
-      div.slider_caption Диапазон цены
-      div#amount
-    +double_slider(0, 1000, 'onSlider(this)')
-    div.widget_footer Стоимость за сутки пребывания в номере
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
-  p some content
+  aside.left_menu
+    +date_picker()
+    div.widget_slider
+      div.widget_amount_header
+        div.slider_caption Диапазон цены
+        div#amount
+      +double_slider(5000, 10000, 'onSlider(this)')
+      div.widget_footer Стоимость за сутки пребывания в номере
+  content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
+    p some content
