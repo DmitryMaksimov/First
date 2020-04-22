@@ -1,11 +1,6 @@
-mixin double_slider(caption_text, footer_text, min, max, min_default=min, max_default=max)
-  div.double_slider__container
-    div.double_slider__header
-      div.double_slider__caption
-      div.double_slider__result
-    div(minimum=min, maximum=max, current_min=min_default, current_max=max_default).double_slider__drag_drop
-      div.double_slider__left
-      div.double_slider__middle_spacer
-      div.double_slider__right
-    div.double_slider__footer
+mixin double_slider(min, max, ondrag = "", min_default=min, max_default=max)
+  div(onchange=ondrag, ondragstart="return false;", minimum=min, maximum=max, current_min=min_default, current_max=max_default).double_slider__container
+    div.double_slider__left
+    div.double_slider__middle
+    div.double_slider__right
 

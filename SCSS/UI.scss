@@ -1,14 +1,19 @@
 /* Double slider */
 
+@mixin unselectable {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 .double_slider__container {
+  @include unselectable;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  height: 40px;
-}
 
-.double_slider__drag_drop {
   background: #FFFFFF;
   /* Dark 25% */
   
@@ -33,8 +38,9 @@
   border-radius: 10px;
 }
 
-.double_slider__middle_spacer {
+.double_slider__middle {
   height: 6px;
+  width: 0px;
   background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
 }
 
