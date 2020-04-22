@@ -9,6 +9,9 @@ function double_slider__calc(double_slider_container) {
   result.middle = result.container.querySelector(".double_slider__middle");
   result.right = result.container.querySelector(".double_slider__right");
 
+  result.input_minimum = result.container.querySelector("input[type='minimum']");
+  result.input_maximum = result.container.querySelector("input[type='maximum']");
+
   result.container_rect = result.container.getBoundingClientRect();
   result.left_rect = result.left.getBoundingClientRect();
   result.middle_rect = result.middle.getBoundingClientRect();
@@ -89,10 +92,10 @@ function double_slider__onmousemove (element) {
   var left = parseInt(context.left.style.marginLeft);
   var middle = parseInt(context.middle.style.width) + left;
 
-  left = (parseFloat(left) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + parseFloat(context.container.minimum);
-  middle = (parseFloat(middle) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + parseFloat(context.container.minimum);
-  context.container.attributes.current_min.value = context.container.current_min = left;
-  context.container.attributes.current_max.value = context.container.current_max = middle;
+  left = (parseFloat(left) / parseFloat(context.result_length)) * (parseFloat(context.container.limit_maximum)-parseFloat(context.container.limit_minimum)) + parseFloat(context.container.limit_minimum);
+  middle = (parseFloat(middle) / parseFloat(context.result_length)) * (parseFloat(context.container.limit_maximum)-parseFloat(context.container.limit_minimum)) + parseFloat(context.container.limit_minimum);
+  context.input_minimum.value = left;
+  context.input_maximum.value = middle;
 
   context.container.onchange(context.container);
 }
@@ -102,13 +105,11 @@ window.addEventListener('load', function () {
     for (var i = 0, len = arr.length; i < len; i++) {
       var context = double_slider__calc(arr[i]);
 
-      context.container.current_min = context.container.attributes.current_min.value;
-      context.container.minimum = context.container.attributes.minimum.value;
-      context.container.maximum = context.container.attributes.maximum.value;
-      context.container.current_max = context.container.attributes.current_max.value;
+      context.container.limit_minimum = context.container.attributes.limit_minimum.value;
+      context.container.limit_maximum = context.container.attributes.limit_maximum.value;
 
-      var new_margin_left = parseInt(context.result_length * (parseFloat(context.container.current_min) - parseFloat(context.container.minimum)) / (parseFloat(context.container.maximum) - parseFloat(context.container.minimum)));
-      var new_middle_width = parseInt(context.result_length * (parseFloat(context.container.current_max) - parseFloat(context.container.minimum)) / (parseFloat(context.container.maximum) - parseFloat(context.container.minimum)));
+      var new_margin_left = parseInt(context.result_length * (parseFloat(context.input_minimum.value) - parseFloat(context.container.limit_minimum)) / (parseFloat(context.container.limit_maximum) - parseFloat(context.container.limit_minimum)));
+      var new_middle_width = parseInt(context.result_length * (parseFloat(context.input_maximum.value) - parseFloat(context.container.limit_minimum)) / (parseFloat(context.container.limit_maximum) - parseFloat(context.container.limit_minimum)));
       new_middle_width -= new_margin_left;
 
       new_middle_width -= new_margin_left;
@@ -125,10 +126,10 @@ window.addEventListener('load', function () {
         context.left.style.marginLeft = new_margin_left + "px";
         context.middle.style.width = new_middle_width + "px";
 
-        new_margin_left = (parseFloat(new_margin_left) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + parseFloat(context.container.minimum);
-        new_middle_width = (parseFloat(new_middle_width) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + parseFloat(context.container.minimum);
-        context.container.attributes.current_min.value = context.container.current_min = new_margin_left;
-        context.container.attributes.current_max.value = context.container.current_max = new_middle_width;
+        new_margin_left = (parseFloat(new_margin_left) / parseFloat(context.result_length)) * (parseFloat(context.container.limit_maximum)-parseFloat(context.container.limit_minimum)) + parseFloat(context.container.limit_minimum);
+        new_middle_width = (parseFloat(new_middle_width) / parseFloat(context.result_length)) * (parseFloat(context.container.limit_maximum)-parseFloat(context.container.limit_minimum)) + parseFloat(context.container.limit_minimum);
+        context.input_minimum.value = new_margin_left;
+        context.input_maximum.value = new_middle_width;
       
         context.container.onchange(context.container);
 
