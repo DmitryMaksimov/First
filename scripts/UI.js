@@ -89,10 +89,12 @@ function double_slider__onmousemove (element) {
   var left = parseInt(context.left.style.marginLeft);
   var middle = parseInt(context.middle.style.width) + left;
 
-  left = (parseFloat(left) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + context.container.minimum;
-  middle = (parseFloat(middle) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + context.container.minimum;
+  left = (parseFloat(left) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + parseFloat(context.container.minimum);
+  middle = (parseFloat(middle) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + parseFloat(context.container.minimum);
   context.container.attributes.current_min.value = context.container.current_min = left;
   context.container.attributes.current_max.value = context.container.current_max = middle;
+
+  context.container.onchange(context.container);
 }
 
 window.addEventListener('load', function () {
@@ -122,6 +124,13 @@ window.addEventListener('load', function () {
 
         context.left.style.marginLeft = new_margin_left + "px";
         context.middle.style.width = new_middle_width + "px";
+
+        new_margin_left = (parseFloat(new_margin_left) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + parseFloat(context.container.minimum);
+        new_middle_width = (parseFloat(new_middle_width) / parseFloat(context.result_length)) * (parseFloat(context.container.maximum)-parseFloat(context.container.minimum)) + parseFloat(context.container.minimum);
+        context.container.attributes.current_min.value = context.container.current_min = new_margin_left;
+        context.container.attributes.current_max.value = context.container.current_max = new_middle_width;
+      
+        context.container.onchange(context.container);
 
         arr[i].addEventListener('mousedown', double_slider__onmousedown );
         arr[i].addEventListener('ondragstart', function() {

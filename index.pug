@@ -1,14 +1,17 @@
 extends includes/template.pug
 
 block content
+  script(type="text/javascript" src='scripts/index.js')
   p 1 some content
   p some content
   p some content
-  input(type=text)#amount
   p some content
-  #slider-range
-  p some content
-  +double_slider("ДИАПАЗОН ЦЕНЫ", "Стоимость за сутки пребывания в номере", 0, 1000)
+  div.widget_slider
+    div.widget_amount_header
+      div.slider_caption Диапазон цены
+      div#amount
+    +double_slider(0, 1000, 'onSlider(this)')
+    div.widget_footer Стоимость за сутки пребывания в номере
   p some content
   p some content
   p some content

@@ -95,3 +95,51 @@ body {
   font-size: 24px;
 
 }
+
+.double_slider__container {
+  margin-top:23px;
+  margin-bottom:20px;
+}
+
+.widget_slider {
+  display: flex;
+  flex-direction: column;
+}
+
+.widget_amount_header {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.slider_caption {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height */
+  
+  text-transform: uppercase;
+  
+  /* Dark 100% */
+  
+  color: #1F2041;
+}
+
+#amount {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+
+  margin-left: auto;
+  /* identical to box height */
+
+  text-align: right;
+  text-transform: uppercase;
+
+  /* Dark 50% */
+
+  color: rgba(31, 32, 65, 0.5);
+}
