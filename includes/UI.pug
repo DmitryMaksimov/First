@@ -6,5 +6,15 @@ mixin double_slider(min, max, ondrag = null, min_default=min, max_default=max)
 
 mixin date_picker()
   div.date_picker__container
-    div.date_picker__caption 19 авг - 23 авг
-    div.date_picker__show_hide 
+    div.date_picker__container_from_to
+      div.date_picker__caption 19.08.21
+      div.date_picker__button 
+    div.date_picker__container_from_to
+      div.date_picker__caption 19.09.22
+      div.date_picker__button 
+  div.date_picker__popup_container
+    div.date_picker__popup_month_switcher
+      div.date_picker__popup_month_button 
+      div.date_picker__popup_month_title Месяц
+      div.date_picker__popup_month_button 
+    div.date_picker__popup_month_table
