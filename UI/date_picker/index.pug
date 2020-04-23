@@ -1,10 +1,12 @@
 append style
   link(rel="stylesheet", href="UI/date_picker/style.scss")
 
-mixin date_picker__row(...items)
-  div.date_picker__popup_month_table__row
+mixin date_picker__row(className, ...items)
+  div.date_picker__row
     each item in items
-      div.date_picker__popup_month_table__cell= item
+      div(class=className)
+        div.date_picker__cell
+          span= item
 
 mixin date_picker()
   div.date_picker__container
@@ -19,10 +21,11 @@ mixin date_picker()
       div.date_picker__popup_month_button 
       div.date_picker__popup_month_title Месяц
       div.date_picker__popup_month_button 
-    div.date_picker__popup_month_table
-      +date_picker__row("пн", "вт", "ср", "чт", "пт", "сб", "вс")
-      +date_picker__row("1", "2", "3", "4", "5", "6", "7")
-      +date_picker__row("8", "9", "10", "11", "12", "13", "14")
-      +date_picker__row("15", "16", "17", "18", "19", "20", "21")
-      +date_picker__row("22", "23", "24", "25", "26", "27", "28")
-      +date_picker__row("29", "30", "31", "1", "2", "3", "4")
+    div.date_picker__month_table
+      +date_picker__row('date_picker__week_item', "пн", "вт", "ср", "чт", "пт", "сб", "вс")
+      +date_picker__row('date_picker__today', "1", "2", "3", "4", "5", "6", "7")
+      +date_picker__row('date_picker__fill_end', "8", "9", "10", "11", "12", "13", "14")
+      +date_picker__row('date_picker__select', "15", "16", "17", "18", "19", "20", "21")
+      +date_picker__row('date_picker__fill_start', "22", "23", "24", "25", "26", "27", "28")
+      +date_picker__row('date_picker__fill', "29", "30", "31", "1", "2", "3", "4")
+    div.date_picker__footer buttons
