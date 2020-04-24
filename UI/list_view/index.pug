@@ -1,0 +1,19 @@
+append style
+  link(rel="stylesheet", href="UI/list_view/style.scss")
+
+append script
+  script(type="text/javascript" src='UI/list_view/script.js')
+
+mixin list_view(onchange=null)
+  div('onchange'=onchange).list_view__container
+    div.list_view__header
+      div.list_view__caption 19.09.22 по 19,09,55
+      div(onclick="\
+        var element = parentElement.parentElement;\
+        var popup = element.querySelector('.list_view__popup_container');\
+        var rect = element.getBoundingClientRect();\
+        popup.style.left = rect.left+'px';\
+        popup.style.top = rect.bottom+'px';\
+        popup.style.visibility='visible';\
+      ").list_view__button 
+    div.list_view__popup_container

@@ -222,6 +222,7 @@ window.date_picker__onprev_month = function date_picker__onprev_month(elem) {
   element.current_month = newDate;
   date_picker__fillMonth(element);
 }
+
 /* auto close */
 function date_picker__onmousedown_document(event) {
   var e = document.elementFromPoint(event.clientX, event.clientY);
