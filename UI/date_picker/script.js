@@ -48,7 +48,7 @@ window.date_picker__fillMonth = function (element) {
   month = new Date(value.getFullYear(), value.getMonth(), 0);
   var lastdays = month.getDate();
 
-  element.querySelector(".date_picker__popup_month_title").innerText = new Intl.DateTimeFormat('ru', { month: 'long' }).format(value);
+  element.querySelector(".date_picker__popup_month_title").innerText = String(new Intl.DateTimeFormat('ru', { month: 'long'}).format(value)).toString() + ' ' + value.getFullYear();
   var table = element.querySelector(".date_picker__month_table");
 
   var day = lastdays - weekday; //Заполняем first row остатками предыдущего месяца высчитав первый day
@@ -126,6 +126,11 @@ function date_picker__onmousedown(event) {
   date_picker__value_from = date_picker_drag.selection_from;
   date_picker__value_to = date_picker_drag.selection_to;
 
+  if(date_picker_drag.single_selection) {
+    date_picker__drag_start = this.value;
+    return;
+  }
+
   if(date_picker__compareDate(this.value, date_picker_drag.selection_from) == 0) {
     date_picker__drag_start = date_picker_drag.selection_to;
   } else if(date_picker__compareDate(this.value, date_picker_drag.selection_to) == 0) {
@@ -138,7 +143,8 @@ function date_picker__onmousedown(event) {
 function date_picker__onmouseover(event) {
   if(date_picker_drag == null)
     return;
-  if(date_picker__compareDate(this.value, date_picker__drag_start) == 0) {
+  if((date_picker__compareDate(this.value, date_picker__drag_start) == 0) ||
+  date_picker_drag.single_selection) {
     date_picker_drag.selection_from = this.value;
     date_picker_drag.selection_to = this.value;
     date_picker__fillMonth(date_picker_drag);
@@ -170,7 +176,8 @@ function date_picker__onclick(event) {
   var date_picker_drag = this.parentElement.parentElement.parentElement.parentElement;
 
   if((date_picker_drag.selection_from == null) ||
-  (date_picker_drag.selection_to == null)) {
+  (date_picker_drag.selection_to == null) ||
+  date_picker_drag.single_selection) {
     date_picker_drag.selection_from = date_picker_drag.selection_to = this.value;
     date_picker__fillMonth(date_picker_drag);
     return;
@@ -200,16 +207,16 @@ function date_picker__onclick(event) {
   date_picker__fillMonth(date_picker_drag);
 }
 
-function date_picker__onnext_month(event) {
-  var element = this.parentElement.parentElement.parentElement;
+window.date_picker__onnext_month = function (elem) {
+  var element = elem.parentElement.parentElement.parentElement;
   var current = element.current_month;
   var newDate = new Date(current.getFullYear(), current.getMonth() + 1, current.getDate());
   element.current_month = newDate;
   date_picker__fillMonth(element);
 }
 
-function date_picker__onprev_month(event) {
-  var element = this.parentElement.parentElement.parentElement;
+window.date_picker__onprev_month = function date_picker__onprev_month(elem) {
+  var element = elem.parentElement.parentElement.parentElement;
   var current = element.current_month;
   var newDate = new Date(current.getFullYear(), current.getMonth() - 1, current.getDate());
   element.current_month = newDate;
@@ -227,21 +234,46 @@ function date_picker__onmousedown_document(event) {
     arr[i].style.visibility = 'hidden';
 }
 
+window.date_picker__update_caption = function(element) {
+  var caption = element.querySelector('.date_picker__caption');
+  if((element.selection_from == null) || (element.selection_to == null)) {
+    caption.innerText = "";
+    return;
+  }
+
+  if(element.single_selection) {
+    var from = new Intl.DateTimeFormat('ru', { day: '2-digit', month: '2-digit', year: 'numeric'}).format(element.selection_from);
+    caption.innerText = from.toString();
+  } else {
+    var from = new Intl.DateTimeFormat('ru', { day: 'numeric', month: 'short' }).format(element.selection_from);
+    var to = new Intl.DateTimeFormat('ru', { day: 'numeric', month: 'short' }).format(element.selection_to);
+    caption.innerText = from.toString() + ' - ' + to.toString();
+  }
+}
+
+window.date_picker__accept = function (button) {
+  var element = button.parentElement.parentElement.parentElement;
+  var popup = element.querySelector('.date_picker__popup_container');
+  date_picker__update_caption(element);
+  popup.style.visibility = 'hidden';
+  try {
+    element.onchange(element);
+  } catch(e) {
+
+  }
+}
+
 window.addEventListener('load', function () {
   var arr = document.querySelectorAll(".date_picker__container");
   for(var i=0; i<arr.length; i++) {
 
     var table = arr[i].querySelector(".date_picker__month_table");
 
+    arr[i].single_selection = arr[i].attributes.single_selection != null;
     arr[i].selection_from = arr[i].attributes.selection_from;
     arr[i].selection_to = arr[i].attributes.selection_to;
 
     arr[i].addEventListener("mouseleave", date_picker__onmouseleave);
-
-    var buttons = arr[i].querySelectorAll(".date_picker__popup_month_button");
-    buttons[0].onclick = date_picker__onprev_month;
-    buttons[1].onclick = date_picker__onnext_month;
-
 
     var from = new Date(arr[i].selection_from);
     if(isNaN(from.getTime())) {
@@ -261,15 +293,16 @@ window.addEventListener('load', function () {
       }
     }
 
+    date_picker__update_caption(arr[i]);
 
-    for( var i=1; i<7; i++ ) { //Перебираем строки Начиная со второй
-      var row = table.childNodes[i]; 
-      for( var j=0; j<7; j++) { //Перебираем ячейки
-        var cell = row.childNodes[j];
-        cell.addEventListener("mousedown", date_picker__onmousedown);
+    for( var j=1; j<7; j++ ) { //Перебираем строки Начиная со второй
+      var row = table.childNodes[j]; 
+      for( var k=0; k<7; k++) { //Перебираем ячейки
+        var cell = row.childNodes[k];
         cell.addEventListener("click", date_picker__onclick);
-        cell.addEventListener("mouseover", date_picker__onmouseover);
         cell.addEventListener("dragstart", function() {alert();return false;});
+        cell.addEventListener("mousedown", date_picker__onmousedown);
+        cell.addEventListener("mouseover", date_picker__onmouseover);
       }
     }  
   }

@@ -11,3 +11,7 @@ function floatToString(float) {
 window.onSlider = function onSlider(element) {
   amount.innerText = floatToString(element.current_min) + "₽ - " + floatToString(element.current_max) + "₽";
 }
+
+window.onTest = function onTest(element) {
+  alert(element);
+}

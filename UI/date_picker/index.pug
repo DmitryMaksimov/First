@@ -12,8 +12,8 @@ mixin date_picker__row(className="date_picker__cell",...items)
         div(class=className)
           span.date_picker__span= item
 
-mixin date_picker(sel_from=null, sel_to=null)
-  div(selection_from=sel_from, selection_to=sel_to).date_picker__container
+mixin date_picker(single_selection=true, onchange=null, sel_from=null, sel_to=null)
+  div('onchange'=onchange, 'single_selection'=single_selection, selection_from=sel_from, selection_to=sel_to).date_picker__container
     div.date_picker__container_from_to
       div.date_picker__caption 19.09.22 по 19,09,55
       div(onclick="\
@@ -26,9 +26,9 @@ mixin date_picker(sel_from=null, sel_to=null)
       ").date_picker__button 
     div.date_picker__popup_container
       div.date_picker__popup_month_switcher
-        div.date_picker__popup_month_button 
+        div(onclick="date_picker__onprev_month(this)").date_picker__popup_month_button 
         div.date_picker__popup_month_title Месяц
-        div.date_picker__popup_month_button 
+        div(onclick="date_picker__onnext_month(this)").date_picker__popup_month_button 
       div.date_picker__month_table
         +date_picker__row("date_picker__week_item", "пн", "вт", "ср", "чт", "пт", "сб", "вс")
         +date_picker__row("", "1", "2", "3", "4", "5", "6", "7")
@@ -42,8 +42,7 @@ mixin date_picker(sel_from=null, sel_to=null)
           element=this.parentElement.parentElement.parentElement;\
           element.selection_from = element.selection_to = null;\
           date_picker__fillMonth(element);\
-          ").date_picker__clear Очистить
-        a(onclick="\
-          element=this.parentElement.parentElement.parentElement;\
-\
-          ").date_picker__accept Применить
+          ").date_picker__clear
+          div Очистить
+        a(onclick="date_picker__accept(this)").date_picker__accept
+          div Применить

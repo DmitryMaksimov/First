@@ -118,7 +118,7 @@ body {
 }
 
 .double_slider__container {
-  margin-top:22px;
+  margin-top:18px;
   margin-bottom:15px;
 }
 
@@ -130,19 +130,20 @@ body {
 .widget_amount_header {
   display: flex;
   flex-wrap: nowrap;
+  align-items: baseline;
 }
 
-.slider_caption {
+.widget_caption {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
-  line-height: 15px;
   /* identical to box height */
   
   text-transform: uppercase;
   
-  /* Dark 100% */
+  margin-top: 33px;
+  margin-bottom: 5px;
   
   color: #1F2041;
 }
@@ -169,7 +170,6 @@ body {
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
-  line-height: 14px;
   /* identical to box height, or 117% */
   
   

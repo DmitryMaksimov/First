@@ -3,10 +3,11 @@ extends includes/template.pug
 block content
   script(type="text/javascript" src='scripts/index.js')
   aside.left_menu
-    +date_picker()
+    div.widget_caption Даты пребывания в отеле
+    +date_picker(false)
     div.widget_slider
       div.widget_amount_header
-        div.slider_caption Диапазон цены
+        div.widget_caption Диапазон цены
         div#amount
       +double_slider(5000, 10000, 'onSlider(this)')
       div.widget_footer Стоимость за сутки пребывания в номере
