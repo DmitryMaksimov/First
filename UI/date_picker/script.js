@@ -200,6 +200,22 @@ function date_picker__onclick(event) {
   date_picker__fillMonth(date_picker_drag);
 }
 
+function date_picker__onnext_month(event) {
+  var element = this.parentElement.parentElement.parentElement;
+  var current = element.current_month;
+  var newDate = new Date(current.getFullYear(), current.getMonth() + 1, current.getDate());
+  element.current_month = newDate;
+  date_picker__fillMonth(element);
+}
+
+function date_picker__onprev_month(event) {
+  var element = this.parentElement.parentElement.parentElement;
+  var current = element.current_month;
+  var newDate = new Date(current.getFullYear(), current.getMonth() - 1, current.getDate());
+  element.current_month = newDate;
+  date_picker__fillMonth(element);
+}
+
 window.addEventListener('load', function () {
   var arr = document.querySelectorAll(".date_picker__container");
   for(var i=0; i<arr.length; i++) {
@@ -208,7 +224,13 @@ window.addEventListener('load', function () {
 
     arr[i].selection_from = arr[i].attributes.selection_from;
     arr[i].selection_to = arr[i].attributes.selection_to;
+
     arr[i].addEventListener("mouseleave", date_picker__onmouseleave);
+
+    var buttons = arr[i].querySelectorAll(".date_picker__popup_month_button");
+    buttons[0].onclick = date_picker__onprev_month;
+    buttons[1].onclick = date_picker__onnext_month;
+
 
     var from = new Date(arr[i].selection_from);
     if(isNaN(from.getTime())) {
