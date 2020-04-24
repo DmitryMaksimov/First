@@ -15,11 +15,15 @@ mixin date_picker__row(className="date_picker__cell",...items)
 mixin date_picker(sel_from=null, sel_to=null)
   div(selection_from=sel_from, selection_to=sel_to).date_picker__container
     div.date_picker__container_from_to
-      div.date_picker__caption 19.08.21
-      div.date_picker__button 
-    div.date_picker__container_from_to
-      div.date_picker__caption 19.09.22
-      div.date_picker__button 
+      div.date_picker__caption 19.09.22 по 19,09,55
+      div(onclick="\
+        var element = parentElement.parentElement;\
+        var popup = element.querySelector('.date_picker__popup_container');\
+        var rect = element.getBoundingClientRect();\
+        popup.style.left = rect.left+'px';\
+        popup.style.top = rect.bottom+'px';\
+        popup.style.visibility='visible';\
+      ").date_picker__button 
     div.date_picker__popup_container
       div.date_picker__popup_month_switcher
         div.date_picker__popup_month_button 
@@ -33,4 +37,13 @@ mixin date_picker(sel_from=null, sel_to=null)
         +date_picker__row("", "22", "23", "24", "25", "26", "27", "28")
         +date_picker__row("", "29", "30", "31", "1", "2", "3", "4")
         +date_picker__row("", "5", "6", "7", "8", "9", "10", "11")
-      div.date_picker__footer buttons
+      div.date_picker__footer
+        a(onclick="\
+          element=this.parentElement.parentElement.parentElement;\
+          element.selection_from = element.selection_to = null;\
+          date_picker__fillMonth(element);\
+          ").date_picker__clear Очистить
+        a(onclick="\
+          element=this.parentElement.parentElement.parentElement;\
+\
+          ").date_picker__accept Применить

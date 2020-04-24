@@ -27,7 +27,7 @@ function date_picker__compareDate(v1, v2) {
   return 0;
 }
 
-function date_picker__fillMonth(element) {
+window.date_picker__fillMonth = function (element) {
   var today = new Date();
   var value = element.current_month;
   var sel_from = element.selection_from;
@@ -215,6 +215,17 @@ function date_picker__onprev_month(event) {
   element.current_month = newDate;
   date_picker__fillMonth(element);
 }
+/* auto close */
+function date_picker__onmousedown_document(event) {
+  var e = document.elementFromPoint(event.clientX, event.clientY);
+  do {
+    if(e.className.indexOf('date_picker__popup_container') >= 0)
+      return;
+  } while(e = e.parentElement);
+  var arr = document.querySelectorAll('.date_picker__popup_container');
+  for( var i=0; i<arr.length; i++)
+    arr[i].style.visibility = 'hidden';
+}
 
 window.addEventListener('load', function () {
   var arr = document.querySelectorAll(".date_picker__container");
@@ -263,5 +274,6 @@ window.addEventListener('load', function () {
     }  
   }
   document.addEventListener("mouseup", date_picker__onmouseup);
+  document.addEventListener("mousedown", date_picker__onmousedown_document);
   date_picker__fillMonth(document.querySelector(".date_picker__container"));
 });
