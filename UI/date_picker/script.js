@@ -1,4 +1,15 @@
-function compareDate(v1, v2) {
+var date_picker__value_from, date_picker__value_to;
+var date_picker__last_move = 0;
+var date_picker_drag = null;
+
+function date_picker__compareDate(v1, v2) {
+  if((v1 == null) && (v2 == null))
+    return 0;
+  if(v1 == null)
+    return -1;
+  if(v2 == null)
+    return 1;
+
   if(v1.getFullYear() < v2.getFullYear())
     return -1;
   if(v1.getFullYear() > v2.getFullYear())
@@ -14,8 +25,13 @@ function compareDate(v1, v2) {
   return 0;
 }
 
-function fillMonth(element, value) {
-  var today = new Date("June 30, 2020 23:15:30");
+function date_picker__fillMonth(element) {
+  var today = new Date();
+  var value = element.current_month;
+  var sel_from = element.selection_from;
+  var sel_to = element.selection_to;
+
+  var one_day_start_end = date_picker__compareDate(sel_from, sel_to) == 0;
 
   var month = new Date(value.getFullYear(), value.getMonth(), 1);
   var weekday = month.getDay();
@@ -33,18 +49,22 @@ function fillMonth(element, value) {
   element.querySelector(".date_picker__popup_month_title").innerText = new Intl.DateTimeFormat('ru', { month: 'long' }).format(value);
   var table = element.querySelector(".date_picker__month_table");
 
-  var day = lastdays - weekday;
-  for( var i=1; i<7; i++ ) {
-    var row = table.childNodes[i];
+  var day = lastdays - weekday; //Заполняем first row остатками предыдущего месяца высчитав первый day
 
-    for( var j=0; j<7; j++) {
+  var className = "date_picker__outer";
+
+  for( var i=1; i<7; i++ ) { //Перебираем строки Начиная со второй
+    var row = table.childNodes[i]; 
+
+    for( var j=0; j<7; j++) { //Перебираем ячейки
       var cell = row.childNodes[j];
-      if(weekday == 0)
-        day = 0;
-      if(days == 0)
-        day = 1;
+
+      if(weekday == 0)// После того как кончились дни предыдущего месяца
+        day = 0;//Сбрасываем дни (один прибавим чуть ниже), счетчика дней (возрастает)
+      if(days == 0) //нерасфасованное количество дней в текущем месяце. Убавляем на единицу
+        day = 1; //Инкрементальный счетчик текущего значения для дня
       else
-        day ++;
+        day ++; //
       
       cell.childNodes[0].childNodes[0].innerText = day;
 
@@ -52,15 +72,42 @@ function fillMonth(element, value) {
       if(weekday>0)
         current = new Date(value.getFullYear(), value.getMonth()-1, day);
       else
-        if(days>0)
+        if(days>0) {
           current = new Date(value.getFullYear(), value.getMonth(), day);
-        else
+          className = "date_picker__cell";
+        } else {
           current = new Date(value.getFullYear(), value.getMonth()+1, day);
+          className = "date_picker__outer";
+        }
 
-      if(compareDate(current, today) == 0) {
-        cell.childNodes[0].className = "date_picker__today";
+      cell.value = current;
+      cell.className = "date_picker__cell";
+      cell.childNodes[0].className = "date_picker__cell";
+      cell.childNodes[0].childNodes[0].className = className;
+      
+
+      if(date_picker__compareDate(current, today) == 0) { //Если это сегодняшний день, отмечаем
+        cell.className = "date_picker__today";
       }
-          
+
+      if(one_day_start_end) { //День начала совпадает с окончанием
+        if(date_picker__compareDate(current, sel_from) == 0) {
+          cell.className = "date_picker__select";
+        }
+      } else {
+        if(date_picker__compareDate(sel_from, current) == 0) {
+          cell.className = "date_picker__select";
+          cell.childNodes[0].className = "date_picker__fill_start";
+        } else
+        if(date_picker__compareDate(sel_to, current) == 0) {
+          cell.className = "date_picker__select";
+          cell.childNodes[0].className = "date_picker__fill_end";
+        } else
+        if((date_picker__compareDate(sel_from, current) < 0) && (date_picker__compareDate(current, sel_to) < 0)) {
+          cell.childNodes[0].className = "date_picker__fill";
+        }
+      }
+
       if(weekday < 0)
         days --;
       weekday --;
@@ -71,6 +118,103 @@ function fillMonth(element, value) {
   }
 }
 
+function date_picker__onmouseup(event) {
+  date_picker_drag = null;
+}
+
+function date_picker__onmousedown(event) {
+  date_picker_drag = this.parentElement.parentElement.parentElement.parentElement;
+  date_picker__value_from = date_picker_drag.selection_from;
+  date_picker__value_to = date_picker_drag.selection_to;
+}
+
+function date_picker__onclick(event) {
+  var date_picker_drag = this.parentElement.parentElement.parentElement.parentElement;
+
+  if((date_picker_drag.selection_from == null) ||
+  (date_picker_drag.selection_to == null)) {
+    date_picker_drag.selection_from = date_picker_drag.selection_to = this.value;
+    date_picker__fillMonth(date_picker_drag);
+    return;
+  }
+
+  if(this.value < date_picker_drag.selection_from) {
+    date_picker_drag.selection_from = this.value;
+    date_picker__fillMonth(date_picker_drag);
+    date_picker__last_move = -1;
+    return;
+  }
+
+  if(date_picker_drag.selection_to < this.value) {
+    date_picker_drag.selection_to = this.value;
+    date_picker__fillMonth(date_picker_drag);
+    date_picker__last_move = 1;
+    return;
+  }
+
+  if(date_picker__last_move == 0)
+    return;
+
+  if(date_picker__last_move < 0)
+    date_picker_drag.selection_from = this.value;
+  else
+    date_picker_drag.selection_to = this.value;
+  date_picker__fillMonth(date_picker_drag);
+}
+
+function date_picker__onmouseenter(event) {
+  if(date_picker_drag == null)
+    return;
+  var element = this.parentElement.parentElement.parentElement.parentElement;
+}
+
+function date_picker__onmouseout(event) {
+  if(date_picker_drag == null)
+    return;
+  date_picker_drag.selection_from = date_picker__value_from;
+  date_picker_drag.selection_to = date_picker__value_to;
+  date_picker_drag = null;
+}
+
 window.addEventListener('load', function () {
-  fillMonth(document.querySelector(".date_picker__container"), new Date('June 1, 2020 23:15:30'));
+  var arr = document.querySelectorAll(".date_picker__container");
+  for(var i=0; i<arr.length; i++) {
+
+    var table = arr[i].querySelector(".date_picker__month_table");
+
+    arr[i].selection_from = arr[i].attributes.selection_from;
+    arr[i].selection_to = arr[i].attributes.selection_to;
+    arr[i].addEventListener("mouseout", date_picker__onmouseout);
+
+    var from = new Date(arr[i].selection_from);
+    if(isNaN(from.getTime())) {
+      arr[i].current_month = new Date();
+      arr[i].selection_from = null;
+      arr[i].selection_to = null;
+    } else {
+      var to = new Date(arr[i].selection_to);
+      if(isNaN(to.getTime())) {
+        arr[i].current_month = new Date();
+        arr[i].selection_from = null;
+        arr[i].selection_to = null;
+      } else {
+        arr[i].selection_from = from;
+        arr[i].selection_to = to;
+        arr[i].current_month = from;
+      }
+    }
+
+
+    for( var i=1; i<7; i++ ) { //Перебираем строки Начиная со второй
+      var row = table.childNodes[i]; 
+      for( var j=0; j<7; j++) { //Перебираем ячейки
+        var cell = row.childNodes[j];
+        cell.addEventListener("mousedown", date_picker__onmousedown);
+        cell.addEventListener("click", date_picker__onclick);
+        cell.addEventListener("mouseenter", date_picker__onmouseenter);
+      }
+    }  
+  }
+  document.addEventListener("mouseup", date_picker__onmouseup);
+  date_picker__fillMonth(document.querySelector(".date_picker__container"));
 });
