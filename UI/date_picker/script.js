@@ -1,6 +1,8 @@
-var date_picker__value_from, date_picker__value_to;
+var date_picker__value_from = null;
+var date_picker__value_to = null;
 var date_picker__last_move = 0;
 var date_picker_drag = null;
+var date_picker__drag_start = null;
 
 function date_picker__compareDate(v1, v2) {
   if((v1 == null) && (v2 == null))
@@ -112,9 +114,6 @@ function date_picker__fillMonth(element) {
         days --;
       weekday --;
     }
-
-
-
   }
 }
 
@@ -126,6 +125,45 @@ function date_picker__onmousedown(event) {
   date_picker_drag = this.parentElement.parentElement.parentElement.parentElement;
   date_picker__value_from = date_picker_drag.selection_from;
   date_picker__value_to = date_picker_drag.selection_to;
+
+  if(date_picker__compareDate(this.value, date_picker_drag.selection_from) == 0) {
+    date_picker__drag_start = date_picker_drag.selection_to;
+  } else if(date_picker__compareDate(this.value, date_picker_drag.selection_to) == 0) {
+    date_picker__drag_start = date_picker_drag.selection_from;
+  } else {
+    date_picker__drag_start = this.value;
+  }
+}
+
+function date_picker__onmouseover(event) {
+  if(date_picker_drag == null)
+    return;
+  if(date_picker__compareDate(this.value, date_picker__drag_start) == 0) {
+    date_picker_drag.selection_from = this.value;
+    date_picker_drag.selection_to = this.value;
+    date_picker__fillMonth(date_picker_drag);
+    return;
+  }
+  if(this.value < date_picker__drag_start) {
+    date_picker_drag.selection_from = this.value;
+    date_picker_drag.selection_to = date_picker__drag_start;
+    date_picker__fillMonth(date_picker_drag);
+    date_picker__last_move = -1;
+    return;
+  }
+  date_picker_drag.selection_from = date_picker__drag_start;
+  date_picker_drag.selection_to = this.value;
+  date_picker__fillMonth(date_picker_drag);
+  date_picker__last_move = 1;
+}
+
+function date_picker__onmouseleave(event) {
+  if(date_picker_drag == null)
+    return;
+  date_picker_drag.selection_from = date_picker__value_from;
+  date_picker_drag.selection_to = date_picker__value_to;
+  date_picker__fillMonth(date_picker_drag);
+  date_picker_drag = null;
 }
 
 function date_picker__onclick(event) {
@@ -162,20 +200,6 @@ function date_picker__onclick(event) {
   date_picker__fillMonth(date_picker_drag);
 }
 
-function date_picker__onmouseenter(event) {
-  if(date_picker_drag == null)
-    return;
-  var element = this.parentElement.parentElement.parentElement.parentElement;
-}
-
-function date_picker__onmouseout(event) {
-  if(date_picker_drag == null)
-    return;
-  date_picker_drag.selection_from = date_picker__value_from;
-  date_picker_drag.selection_to = date_picker__value_to;
-  date_picker_drag = null;
-}
-
 window.addEventListener('load', function () {
   var arr = document.querySelectorAll(".date_picker__container");
   for(var i=0; i<arr.length; i++) {
@@ -184,7 +208,7 @@ window.addEventListener('load', function () {
 
     arr[i].selection_from = arr[i].attributes.selection_from;
     arr[i].selection_to = arr[i].attributes.selection_to;
-    arr[i].addEventListener("mouseout", date_picker__onmouseout);
+    arr[i].addEventListener("mouseleave", date_picker__onmouseleave);
 
     var from = new Date(arr[i].selection_from);
     if(isNaN(from.getTime())) {
@@ -211,7 +235,8 @@ window.addEventListener('load', function () {
         var cell = row.childNodes[j];
         cell.addEventListener("mousedown", date_picker__onmousedown);
         cell.addEventListener("click", date_picker__onclick);
-        cell.addEventListener("mouseenter", date_picker__onmouseenter);
+        cell.addEventListener("mouseover", date_picker__onmouseover);
+        cell.addEventListener("dragstart", function() {alert();return false;});
       }
     }  
   }

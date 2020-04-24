@@ -133,9 +133,7 @@ window.addEventListener('load', function () {
         context.container.onchange(context.container);
 
         arr[i].addEventListener('mousedown', double_slider__onmousedown );
-        arr[i].addEventListener('ondragstart', function() {
-        return false;
-      });
+//        arr[i].addEventListener('ondragstart', function() { return false; });
     }    
   }
 );
