@@ -1,7 +1,7 @@
 doctype html
-include ../UI/date_picker/index.pug
-include ../UI/double_slider/index.pug
-include ../UI/list_view/index.pug
+include ../UI/date_picker/date_picker.pug
+include ../UI/double_slider/double_slider.pug
+include ../UI/list_view/list_view.pug
 html
   head
     meta(charset="UTF-8")
@@ -15,7 +15,6 @@ html
       link(rel="stylesheet", href="SCSS/footer_style.scss")
     block scripts
       <!-- script window.onerror = function(msg, url, lineNo, columnNo, error) { alert(error); return false;} -->
-      script(type="text/javascript" src='scripts/jquery-3.5.0.min.js')
       script(type="text/javascript" src='scripts/template.js')
   body
     block header
