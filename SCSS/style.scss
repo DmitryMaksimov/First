@@ -93,6 +93,16 @@ body {
   width: 100%;
 }
 
+input {
+  border: none;
+}
+
+.input {
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
 #content {
   width: 100%;
   background: #FFFFFF;
@@ -108,23 +118,34 @@ body {
   flex-wrap: wrap;
 }
 
-#subscribe {
+#subscribe > div {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 #subscribe a {
+  display: flex;
+  margin-left: auto;
+  margin-right: 5px;
+
   font-family: 'Material Icons';
   font-size: 24px;
 
 }
 
-.double_slider__container {
-  margin-top:18px;
-  margin-bottom:15px;
+#subscribe input {
+  margin-left: 10px;
+
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+
 }
 
 aside {
   padding: 4px;
 }
+
 .widget_slider {
   display: flex;
   flex-direction: column;
