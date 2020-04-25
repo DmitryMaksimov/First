@@ -8,7 +8,7 @@ mixin list_view__add_row(name, titles, value=0)
   div(names=titles, name=name).list_view__row
     div.list_view__title= name
     div(onclick="list_view__button_sub(this.parentElement)").list_view__sub_button -
-    input.list_view__editor(type="text", value=value)
+    input.list_view__editor(type="text", value=value, onchange="list_view__onrowchange(this.parentElement)")
     div(onclick="list_view__button_add(this.parentElement)").list_view__add_button +
 
 mixin list_view(default_caption = '', decls, short_view_decls=null, onchange=null)

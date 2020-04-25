@@ -20,26 +20,26 @@ function list_view__onmousedown_document(event) {
     arr[i].style.visibility = 'hidden';
 }
 
-window.list_view__button_add = function (element) {
-  var input = element.querySelector(".list_view__editor");
+window.list_view__button_add = function (row) {
+  var input = row.querySelector(".list_view__editor");
   var value = input.value;
   if(isNaN(value))
     value = 1;
   else
     value ++;
   input.value = value;
-  list_view__update_caption(element.parentElement.parentElement);
+  list_view__onrowchange(row);
 }
 
-window.list_view__button_sub = function (element) {
-  var input = element.querySelector(".list_view__editor");
+window.list_view__button_sub = function (row) {
+  var input = row.querySelector(".list_view__editor");
   var value = input.value;
   if(isNaN(value) || value <= 0)
     value = 0;
   else
     value --;
   input.value = value;
-  list_view__update_caption(element.parentElement.parentElement);
+  list_view__onrowchange(row);
 }
 
 window.list_view__update_caption = function(element) {
@@ -85,7 +85,7 @@ window.list_view__accept = function(element) {
   element = element.parentElement;
   for(var i=0; i<element.values.length; i++) {
     val = parseInt(list.childNodes[i].querySelector('.list_view__editor').value);
-    if(isNaN(val))
+    if(isNaN(val) || val < 0)
       val = 0;
     element.values[i] = val;
   }
@@ -112,6 +112,7 @@ window.list_view__show_popup = function(elem) {
   var arr = popup.querySelectorAll('.list_view__editor');
   for(var i = 0; i<element.values.length; i++) {
     arr[i].value = element.values[i];
+    list_view__onrowchange(arr[i].parentElement);
   }
 
   if(popup.style.visibility != 'visible')
@@ -130,6 +131,19 @@ function list_view__onresize() {
     arr[i].style.top = element.offsetTop + element.clientHeight + 'px';
     arr[i].style.width = element.offsetWidth + 'px';
   }
+}
+
+window.list_view__onrowchange = function(row) {
+  var input = row.querySelector(".list_view__editor");
+  var val = parseInt(input.value);
+
+  if(isNaN(val))
+    return;
+
+  if(val <= 0)
+    row.querySelector(".list_view__sub_button").classList.add('list_view__sub_button_disabled');
+  else
+    row.querySelector(".list_view__sub_button").classList.remove('list_view__sub_button_disabled');
 }
 
 window.addEventListener('load', function () {

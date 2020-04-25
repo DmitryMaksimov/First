@@ -47,7 +47,7 @@
   font-style: inherit;
   font-family: inherit;
   font-weight: inherit;
-  
+
   color: inherit;
 }
 
@@ -122,6 +122,10 @@
   @include list_view__as_buttons;
 }
 
+.list_view__sub_button_disabled {
+  opacity: 0.38;
+}
+
 .list_view__add_button {
   @include list_view__as_buttons;
 }
@@ -146,18 +150,21 @@
   text-transform: uppercase;
 }
 
-.list_view__clear {
+@mixin list_view__button {
+  @include unselectable;
   padding: 8px;
   padding-bottom: 0px;
   padding-left: 0px;
+  padding-right: 2px;
+}
+.list_view__clear {
+  @include list_view__button;
+
   color: rgba(31, 32, 65, 0.5);
 }
 
 .list_view__accept {
-  @include unselectable;
-  padding: 8px;
-  padding-right: 2px;
-  padding-bottom: 0px;
+  @include list_view__button;
 
   margin-left: auto;
   color: #BC9CFF;
