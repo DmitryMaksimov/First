@@ -5,18 +5,24 @@ extends includes/template.pug
 block content
   script(type="text/javascript" src='scripts/index.js')
   aside.left_menu
+
     div.widget_caption Даты пребывания в отеле
     +date_picker(false)
+
     div.widget_caption Гости
     - var list_guests = ['Гость', 'Гостя', 'Гостей'];
     - var list_guest_types = ['Взрослые', 'Дети', 'Младенцы'];
-    - 
-      var list_view_guests = [ 
-        {name: "Взрослые", decls: ['взрослый', 'взрослых', 'взрослых']},
-        {name: "Дети", decls: ['ребёнок', 'ребёнка', 'детей']},
-        {name: "Младенцы", decls: ['младенец', 'младенца', 'младенцев']}
-      ];
     +list_view("Сколько гостей", list_guest_types, list_guests)
+
+    div.widget_caption Удобства номера
+    - 
+      var list_view_rooms = [ 
+        {name: "Спальни", decls: ['Спальня', 'Спальни', 'Спален']},
+        {name: "Кровати", decls: ['Кровать', 'Кровати', 'Кроватей']},
+        {name: "Ванные комнаты", decls: ['Ванная комната', 'Ванные комнаты', 'Ванных комнат']}
+      ];
+    +list_view("Спальни, кровати...", list_view_rooms)
+
     div.widget_slider
       div.widget_amount_header
         div.widget_caption Диапазон цены

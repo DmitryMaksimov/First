@@ -14,7 +14,7 @@ mixin list_view__add_row(name, titles, value=0)
 mixin list_view(default_caption = '', decls, short_view_decls=null, onchange=null)
   div('onchange'=onchange, short=short_view_decls, caption=default_caption).list_view__container
     div(onmousedown="list_view__show_popup(this)").list_view__header
-      div.list_view__caption= default_caption
+      input(type="text", name="", value=default_caption, readonly=true).list_view__caption
       div.list_view__button 
     div.list_view__popup_container
       each row in decls

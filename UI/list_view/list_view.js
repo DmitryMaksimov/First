@@ -64,10 +64,19 @@ window.list_view__update_caption = function(element) {
         captionText += ", " + append;
     }
   }
-  if(total == 0)
-    caption.innerText = element.caption;
-  else
-    caption.innerText = captionText;
+
+  if(caption.tagName.toUpperCase() == 'INPUT') {
+    if(total == 0)
+      caption.value = element.caption;
+    else
+      caption.value = captionText;
+  } else {
+    if(total == 0)
+      caption.innerText = element.caption;
+    else
+      caption.innerText = captionText;
+ 
+  }
   return;  
 }
 
@@ -81,7 +90,7 @@ window.list_view__accept = function(element) {
     element.values[i] = val;
   }
   list_view__update_caption(element);
-  element.parentElement.querySelector('.list_view__popup_container').style.visibility = 'hidden';
+  element.querySelector('.list_view__popup_container').style.visibility = 'hidden';
 }
 
 window.list_view__clear = function(element) {
