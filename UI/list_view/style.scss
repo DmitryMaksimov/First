@@ -9,6 +9,9 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
 }
 
 .list_view__header {
@@ -18,12 +21,9 @@
   justify-content: stretch;
   height: 44px;
   
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  margin-left: 4px;
-  margin-right: 4px;
+
   /* identical to box height, or 171% */
 
 
@@ -36,7 +36,7 @@
 
   border: 1px solid rgba(31, 32, 65, 0.25);
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 4px 4px 0px 0px;
 }
 
 .list_view__caption {
@@ -64,19 +64,93 @@
 
 /* Popup */
 .list_view__popup_container {
-  margin-top: 5px;
-  margin-left: 4px;
-  padding: 10px;
-  width: 320px;
+  padding: 0px 5px 0px 15px;
 
   background: #FFFFFF;
-  border: 1px solid rgba(31, 32, 65, 0.25);
+  /* Dark 50% */
+  
+  border: 1px solid rgba(31, 32, 65, 0.5);
   box-sizing: border-box;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-  border-radius: 4px;
+  border-radius: 0px 0px 3px 3px;
+
+  line-height: 37px;
 
   visibility: hidden;
 
+  text-transform: uppercase;
   z-index: 10;
   position: absolute;
+}
+
+.list_view__row {
+  display: flex;
+  align-items: center;
+}
+
+.list_view__sub_button {
+  margin-left: auto;
+}
+
+@mixin list_view__as_buttons {
+  @include unselectable;
+
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  border-radius: 22px;
+
+  width: 30px;
+  height: 30px;
+
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(31, 32, 65, 0.5);
+}
+
+.list_view__sub_button {
+  @include list_view__as_buttons;
+}
+
+.list_view__add_button {
+  @include list_view__as_buttons;
+}
+
+.list_view__editor {
+  border: none;
+  text-align: center;
+
+  width: 30px;
+
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+
+.list_view__footer {
+  @include unselectable;
+
+  display: flex;
+  text-transform: uppercase;
+}
+
+.list_view__clear {
+  padding: 8px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  color: rgba(31, 32, 65, 0.5);
+}
+
+.list_view__accept {
+  @include unselectable;
+  padding: 8px;
+  padding-right: 2px;
+  padding-bottom: 0px;
+
+  margin-left: auto;
+  color: #BC9CFF;
 }

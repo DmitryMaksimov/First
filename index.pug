@@ -1,12 +1,22 @@
 extends includes/template.pug
 
+  
+
 block content
   script(type="text/javascript" src='scripts/index.js')
   aside.left_menu
     div.widget_caption Даты пребывания в отеле
     +date_picker(false)
     div.widget_caption Гости
-    +list_view()
+    - var list_guests = ['Гость', 'Гостя', 'Гостей'];
+    - var list_guest_types = ['Взрослые', 'Дети', 'Младенцы'];
+    - 
+      var list_view_guests = [ 
+        {name: "Взрослые", decls: ['взрослый', 'взрослых', 'взрослых']},
+        {name: "Дети", decls: ['ребёнок', 'ребёнка', 'детей']},
+        {name: "Младенцы", decls: ['младенец', 'младенца', 'младенцев']}
+      ];
+    +list_view("Сколько гостей", list_guest_types, list_guests)
     div.widget_slider
       div.widget_amount_header
         div.widget_caption Диапазон цены

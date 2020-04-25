@@ -20,8 +20,8 @@ mixin date_picker(single_selection=true, onchange=null, sel_from=null, sel_to=nu
         var element = parentElement.parentElement;\
         var popup = element.querySelector('.date_picker__popup_container');\
         var rect = element.getBoundingClientRect();\
-        popup.style.left = rect.left+'px';\
-        popup.style.top = rect.bottom+'px';\
+        popup.style.left = window.scrollX+rect.left+'px';\
+        popup.style.top = window.scrollY+rect.bottom+'px';\
         popup.style.visibility='visible';\
       ").date_picker__button 
     div.date_picker__popup_container

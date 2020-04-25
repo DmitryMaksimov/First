@@ -4,16 +4,23 @@ append style
 append script
   script(type="text/javascript" src='UI/list_view/script.js')
 
-mixin list_view(onchange=null)
-  div('onchange'=onchange).list_view__container
+mixin list_view__add_row(name, titles, value=0)
+  div(names=titles, name=name).list_view__row
+    div.list_view__title= name
+    div(onclick="list_view__button_sub(this.parentElement)").list_view__sub_button -
+    input.list_view__editor(type="text", value=value)
+    div(onclick="list_view__button_add(this.parentElement)").list_view__add_button +
+
+mixin list_view(default_caption = '', decls, shor_view_decls=null, onchange=null)
+  div('onchange'=onchange, short=shor_view_decls, caption=default_caption).list_view__container
     div.list_view__header
-      div.list_view__caption 19.09.22 по 19,09,55
-      div(onclick="\
-        var element = parentElement.parentElement;\
-        var popup = element.querySelector('.list_view__popup_container');\
-        var rect = element.getBoundingClientRect();\
-        popup.style.left = rect.left+'px';\
-        popup.style.top = rect.bottom+'px';\
-        popup.style.visibility='visible';\
-      ").list_view__button 
+      div.list_view__caption= default_caption
+      div(onclick="list_view__show_popup(this.parentElement.parentElement);").list_view__button 
     div.list_view__popup_container
+      each row in decls
+        +list_view__add_row((row.name == null)?row:row.name, row.decls)
+      div.list_view__footer
+        a(onclick="").list_view__clear
+          div Очистить
+        a(onclick="list_view__accept(this.parentElement.parentElement)").list_view__accept
+          div Применить        

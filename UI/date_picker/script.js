@@ -225,11 +225,16 @@ window.date_picker__onprev_month = function date_picker__onprev_month(elem) {
 
 /* auto close */
 function date_picker__onmousedown_document(event) {
-  var e = document.elementFromPoint(event.clientX, event.clientY);
-  do {
-    if(e.className.indexOf('date_picker__popup_container') >= 0)
-      return;
-  } while(e = e.parentElement);
+  try {
+    var e = document.elementFromPoint(event.clientX, event.clientY);
+    while(e) {
+      if(e.className.indexOf('date_picker__popup_container') >= 0)
+        return;
+      e = e.parentElement;
+    }
+  } catch(e) {
+    return;
+  }
   var arr = document.querySelectorAll('.date_picker__popup_container');
   for( var i=0; i<arr.length; i++)
     arr[i].style.visibility = 'hidden';
