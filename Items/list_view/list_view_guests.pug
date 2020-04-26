@@ -1,0 +1,15 @@
+extends ../widget/widget.pug
+
+include list_view_mixin.pug
+
+block caption
+  h3 Гости
+
+block content
+  -
+    var decls = [
+      {name: "Взрослые"},
+      {name: "Дети"},
+      {name: "Младенцы"}
+    ]
+  +list_view("Сколько гостей", decls, ['Гость', 'Гостя', 'Гостей'])

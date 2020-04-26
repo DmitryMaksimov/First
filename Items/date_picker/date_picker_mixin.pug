@@ -5,10 +5,10 @@ mixin date_picker__row(className="date_picker__cell",...items)
         div(class=className)
           span.date_picker__span= item
 
-mixin date_picker(single_selection=true, onchange=null, sel_from=null, sel_to=null)
-  div('onchange'=onchange, 'single_selection'=single_selection, selection_from=sel_from, selection_to=sel_to).date_picker__container
+mixin date_picker(single_selection=true, right_justifyed=null, onchange=null, sel_from=null, sel_to=null)
+  div(onchange=onchange, single_selection=single_selection, right_justifyed=right_justifyed, selection_from=sel_from, selection_to=sel_to).date_picker__container
     div(onmousedown="date_picker__onmousedown(this)").date_picker__container_from_to.input
-      div.date_picker__caption 19.09.22 по 19,09,55
+      div.date_picker__caption
       div.date_picker__button 
     div.date_picker__popup_container
       div.date_picker__popup_month_switcher

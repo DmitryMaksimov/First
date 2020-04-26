@@ -215,9 +215,22 @@ aside {
 .left_menu {
   width: 270px;
   margin-right: 28px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 content {
   margin-left: 28px;
 
+}
+
+.date_piker__left {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.date_piker__left > :first-child {
+  margin-right: 5px;
 }

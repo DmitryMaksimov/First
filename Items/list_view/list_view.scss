@@ -41,6 +41,10 @@
 .list_view__caption {
   margin-left: 15px;
 
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
   font-size: inherit;
   font-style: inherit;
   font-family: inherit;

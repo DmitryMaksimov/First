@@ -273,8 +273,14 @@ window.date_picker__onmousedown = function(elem) {
   element = elem.parentElement;
   var popup = element.querySelector('.date_picker__popup_container');
   var rect = element.getBoundingClientRect();
-  popup.style.left = window.scrollX+rect.left+'px';
-  popup.style.top = window.scrollY+rect.bottom+'px';
+
+  if(element.attributes['right_justifyed'] != null) {
+    popup.style.left = (element.offsetLeft + element.clientWidth - popup.clientWidth) + 'px';
+  } else {
+    popup.style.left = element.offsetLeft + 'px';
+  }
+  popup.style.top = element.offsetTop + element.clientHeight + 'px';
+
   if(popup.style.visibility != 'visible')
     window.setTimeout(function() {popup.style.visibility = 'visible';}, 100)
   return false;
@@ -287,8 +293,14 @@ function date_picker__onresize() {
     if(arr[i].style.visibility != 'visible')
       continue;
 
+    
+
     element = arr[i].parentElement;
-    arr[i].style.left = element.offsetLeft + 'px';
+    if(element.attributes['right_justifyed'] != null) {
+      arr[i].style.left = (element.offsetLeft + element.clientWidth - arr[i].clientWidth) + 'px';
+    } else {
+      arr[i].style.left = element.offsetLeft + 'px';
+    }
     arr[i].style.top = element.offsetTop + element.clientHeight + 'px';
   }
 }
@@ -336,9 +348,9 @@ window.addEventListener('load', function () {
         cell.addEventListener("mouseover", date_picker__onmouseover);
       }
     }  
+    date_picker__fillMonth(arr[i]);
   }
   document.addEventListener("mouseup", date_picker__onmouseup);
   document.addEventListener("mousedown", date_picker__onmousedown_document);
-  date_picker__fillMonth(document.querySelector(".date_picker__container"));
   window.addEventListener('resize', date_picker__onresize);
 });

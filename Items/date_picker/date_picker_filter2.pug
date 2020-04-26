@@ -1,0 +1,10 @@
+extends ../widget/widget.pug
+
+include date_picker_mixin.pug
+
+block caption
+  h3 Даты пребывания в отеле
+
+block content
+  +date_picker(false)
+      

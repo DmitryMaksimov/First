@@ -1,0 +1,14 @@
+extends ../widget/widget.pug
+
+include date_picker_mixin.pug
+
+block content
+  div.date_piker__left
+    div(style='width:100%')
+      h3 Прибытие
+      +date_picker(true)
+
+    div(style='width:100%')
+      h3 Выезд
+      +date_picker(true)
+      
