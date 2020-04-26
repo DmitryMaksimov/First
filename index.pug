@@ -1,15 +1,20 @@
 extends includes/template.pug
 
+append styles
+  link(rel="stylesheet", href="Items/double_slider_filter/double_slider_filter.scss")
+  link(rel="stylesheet", href="Items/date_picker/date_picker.scss")
+  link(rel="stylesheet", href="Items/widget/widget.scss")
+
 append scripts
+  script(type="text/javascript" src='Items/double_slider_filter/double_slider_filter.js')
+  script(type="text/javascript" src='Items/date_picker/date_picker.js')
   script(type="text/javascript" src='scripts/index.js')
 
 block content
   aside.left_menu
 
-    include Items/double_slider_filter.pug
-
-    include Items/room_filter.pug
-
+    include Items/double_slider_filter/double_slider_filter.pug
+    include Items/date_picker/date_picker.pug
 
   content
     p some content

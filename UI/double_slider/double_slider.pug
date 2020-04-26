@@ -5,8 +5,4 @@ append script
   script(type="text/javascript" src='UI/double_slider/double_slider.js')
 
 
-mixin double_slider(min, max, ondrag = null, min_default=min, max_default=max)
-  div(onchange=ondrag, ondragstart="return false;", minimum=min, maximum=max, current_min=min_default, current_max=max_default).double_slider__container
-    div.double_slider__left
-    div.double_slider__middle
-    div.double_slider__right
+

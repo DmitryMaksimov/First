@@ -1,0 +1,21 @@
+extends ../widget/widget.pug
+
+mixin double_slider(min, max, ondrag = null, min_default=min, max_default=max)
+  div.double_slider__wrapper
+    div(onchange=ondrag, ondragstart="return false;", minimum=min, maximum=max, current_min=min_default, current_max=max_default).double_slider__container
+      div.double_slider__left
+      div.double_slider__middle
+      div.double_slider__right
+
+block caption
+  h3 Диапазон цены
+
+block rcaption
+  div#amount
+
+block content
+
+  +double_slider(5000, 10000, 'amount.innerText = parseInt(this.current_min).toLocaleString() + "₽ - " + parseInt(this.current_max).toLocaleString() + "₽"')
+
+block footer
+  p Стоимость за сутки пребывания в номере

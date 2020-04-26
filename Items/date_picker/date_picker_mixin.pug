@@ -1,10 +1,3 @@
-append style
-  link(rel="stylesheet", href="UI/date_picker/date_picker.scss")
-
-append script
-  script(type="text/javascript" src='UI/date_picker/date_picker.js')
-
-
 mixin date_picker__row(className="date_picker__cell",...items)
   div.date_picker__row
     each item in items
@@ -39,3 +32,4 @@ mixin date_picker(single_selection=true, onchange=null, sel_from=null, sel_to=nu
           div Очистить
         a(onclick="date_picker__accept(this)").date_picker__accept
           div Применить
+

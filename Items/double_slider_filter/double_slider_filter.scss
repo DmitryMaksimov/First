@@ -7,6 +7,11 @@
   -ms-user-select: none;
 }
 
+.double_slider__wrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .double_slider__container {
   @include unselectable;
   display: flex;
@@ -22,11 +27,6 @@
   border: 1px solid rgba(31, 32, 65, 0.25);
   box-sizing: border-box;
   border-radius: 3px;
-
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: flex-start;
 }
 
 .double_slider__left {
