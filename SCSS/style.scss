@@ -82,15 +82,51 @@
 
 
 body {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: normal;
-	font-size: 12px;
-  
   display: inline-block;
   
   height: 100%;
   width: 100%;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+	font-size: 12px;
+
+  color: rgba(31, 32, 65, 0.75);
+  
+}
+
+h1 {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+
+  color: #1F2041;
+}
+
+h2 {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 24px;
+
+  color: #1F2041;
+}
+
+h3 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height */
+  
+  text-transform: uppercase;
+  
+  color: #1F2041;
 }
 
 input {
@@ -144,32 +180,6 @@ input {
 
 aside {
   padding: 4px;
-}
-
-.widget_slider {
-  display: flex;
-  flex-direction: column;
-}
-
-.widget_amount_header {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: baseline;
-}
-
-.widget_caption {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  /* identical to box height */
-  
-  text-transform: uppercase;
-  
-  margin-top: 33px;
-  margin-bottom: 5px;
-  
-  color: #1F2041;
 }
 
 #amount {

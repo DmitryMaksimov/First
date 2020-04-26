@@ -1,0 +1,29 @@
+
+block append styles
+  link(rel="stylesheet", href="UI/widget/widget.scss")
+
+block append scripts
+  script(type="text/javascript" src='UI/widget/widget.js')
+
+
+mixin widget(caption, rcaption = null)
+  div.widget__wrapper
+    div.widget__header
+      div.widget__caption
+        h3= caption
+      if rcaption
+      div.widget__rcaption !{rcaption}
+    div.widget__content
+      block
+
+
+div.widget__wrapper
+  div.widget__header
+    div.widget__caption
+      block caption
+    div.widget__rcaption
+      block rcaption
+  div.widget__content
+    block content
+  div.widget__footer
+    block footer

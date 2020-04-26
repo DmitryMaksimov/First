@@ -1,0 +1,32 @@
+
+.widget__header {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.widget__caption {
+  display: flex;
+  flex-direction: row;
+
+  margin-bottom: 5px;
+}
+
+.widget__rcaption {
+  display: flex;
+  margin-left: auto;
+}
+
+.widget__wrapper {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+.widget__content:empty,
+.widget__footer:empty ,
+.widget__caption:empty,
+.widget__rcaption:empty {
+  display: none;
+}

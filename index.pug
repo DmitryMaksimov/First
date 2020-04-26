@@ -1,34 +1,16 @@
 extends includes/template.pug
 
-  
+append scripts
+  script(type="text/javascript" src='scripts/index.js')
 
 block content
-  script(type="text/javascript" src='scripts/index.js')
   aside.left_menu
 
-    div.widget_caption Даты пребывания в отеле
-    +date_picker(false)
+    include Items/double_slider_filter.pug
 
-    div.widget_caption Гости
-    - var list_guests = ['Гость', 'Гостя', 'Гостей'];
-    - var list_guest_types = ['Взрослые', 'Дети', 'Младенцы'];
-    +list_view("Сколько гостей", list_guest_types, list_guests)
+    include Items/room_filter.pug
 
-    div.widget_caption Удобства номера
-    - 
-      var list_view_rooms = [ 
-        {name: "Спальни", decls: ['Спальня', 'Спальни', 'Спален']},
-        {name: "Кровати", decls: ['Кровать', 'Кровати', 'Кроватей']},
-        {name: "Ванные комнаты", decls: ['Ванная комната', 'Ванные комнаты', 'Ванных комнат']}
-      ];
-    +list_view("Спальни, кровати...", list_view_rooms)
 
-    div.widget_slider
-      div.widget_amount_header
-        div.widget_caption Диапазон цены
-        div#amount
-      +double_slider(5000, 10000, 'onSlider(this)')
-      div.widget_footer Стоимость за сутки пребывания в номере
   content
     p some content
     p some content
