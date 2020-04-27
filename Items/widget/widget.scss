@@ -2,13 +2,13 @@
 .widget__header {
   display: flex;
   flex-wrap: nowrap;
+  height: 1.5em;
+  margin-bottom: 5px;
 }
 
 .widget__caption {
   display: flex;
   flex-direction: row;
-
-  margin-bottom: 5px;
 }
 
 .widget__rcaption {
@@ -24,7 +24,28 @@
 
 .widget__content:empty,
 .widget__footer:empty ,
-.widget__caption:empty,
-.widget__rcaption:empty {
+.widget__caption:empty {
   display: none;
+}
+
+.widget__expand {
+  align-self: center;
+
+  font-family: Material Icons;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+
+  cursor: pointer;
+
+  color: rgba(31, 32, 65, 0.5);
+}
+
+
+.widget__hidden_content .widget__expand {
+  transform: rotate(-180deg);
+}
+.widget__hidden_content .widget__content {
+  position: absolute;
+  visibility: hidden;
 }
