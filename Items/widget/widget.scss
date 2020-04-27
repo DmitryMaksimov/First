@@ -1,7 +1,6 @@
 
 .widget__header {
   display: flex;
-  flex-wrap: nowrap;
   height: 1.5em;
   margin-bottom: 5px;
 }
@@ -45,7 +44,13 @@
 .widget__hidden_content .widget__expand {
   transform: rotate(-180deg);
 }
+
 .widget__hidden_content .widget__content {
+  position: absolute;
+  visibility: hidden;
+}
+
+.widget__hidden_content .widget__footer {
   position: absolute;
   visibility: hidden;
 }

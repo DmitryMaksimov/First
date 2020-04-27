@@ -1,9 +1,13 @@
 div.widget__wrapper
   div.widget__header
-    div.widget__caption
-      block caption
-    div.widget__rcaption
-      block rcaption
+    block header
+      div.widget__caption
+        block caption
+      div.widget__rcaption
+        block rcaption
+      if(widget__expandable)
+        - widget__expandable = false
+        div(onclick="var content = parentElement.parentElement.classList.toggle('widget__hidden_content');").widget__expand 
   div.widget__content
     block content
   div.widget__footer

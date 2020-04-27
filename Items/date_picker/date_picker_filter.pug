@@ -2,17 +2,17 @@ extends ../widget/widget.pug
 
 include date_picker_mixin.pug
 
-block content
-  div.date_piker__left
-    div(style='width:100%')
-      h3 Прибытие
-      +date_picker(true)
+prepend header
+  div.date_picker__caption_justifyer
 
-    div(style='width:100%')
-      h3 Выезд
-<<<<<<< HEAD
-      +date_picker(true)
-=======
-      +date_picker(true, true)
->>>>>>> 876d42f... Переписла по новому
+block caption
+  h3 Прибытие
+
+block rcaption
+  h3 Выезд
+
+block content
+  div.date_picker__filter
+    +date_picker(true)
+    +date_picker(true, true)
       

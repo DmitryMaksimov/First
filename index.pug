@@ -22,11 +22,19 @@ append head
 block content
   aside.left_menu
 
+    - widget__expandable = true
     include Items/double_slider_filter/double_slider_filter.pug
+    - widget__expandable = true
     include Items/date_picker/date_picker_filter.pug
+    - widget__expandable = true
     include Items/date_picker/date_picker_filter2.pug
+    - widget__expandable = true
     include Items/list_view/list_view_guests.pug
+    - widget__expandable = true
     include Items/list_view/list_view_rooms.pug
+    - widget__expandable = true
+    include Items/more_options/more_options.pug
+    - widget__expandable = true
     include Items/more_options/more_options.pug
   
   content
