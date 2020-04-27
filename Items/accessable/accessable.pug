@@ -1,0 +1,9 @@
+extends ../widget/widget.pug
+
+include ../inputs/checkbox_mixin.pug
+
+block caption
+  h3 Доступность
+block content
+  +checkboxEx("Широкий коридор", "Ширина коридора в номере не менее 91 см.")
+  +checkboxEx("Помощник для инвалидов", "На 1 этаже вас встретит специалист и проводит до номера.")

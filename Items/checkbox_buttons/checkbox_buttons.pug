@@ -1,0 +1,10 @@
+extends ../widget/widget.pug
+
+include ../inputs/checkbox_mixin.pug
+
+block caption
+  h3 Checkbox Buttons
+block content
+  +checkbox("Можно курить")
+  +checkbox("Можно с питомцами", true)
+  +checkbox("Можно пригласить гостей (до 10 человек)", true)

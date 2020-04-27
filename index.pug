@@ -1,5 +1,6 @@
 extends includes/template.pug
 
+
 append head
   // стили для базового виджета
   link(rel="stylesheet", href="Items/widget/widget.scss")
@@ -16,26 +17,25 @@ append head
   link(rel="stylesheet", href="Items/list_view/list_view.scss")
   script(type="text/javascript" src='Items/list_view/list_view.js')
 
+  //стили и скрипты для простых элементов
+  link(rel="stylesheet", href="Items/inputs/checkbox.scss")
+
 
   script(type="text/javascript" src='scripts/index.js')
 
 block content
   aside.left_menu
 
-    - widget__expandable = true
     include Items/double_slider_filter/double_slider_filter.pug
-    - widget__expandable = true
     include Items/date_picker/date_picker_filter.pug
-    - widget__expandable = true
     include Items/date_picker/date_picker_filter2.pug
-    - widget__expandable = true
     include Items/list_view/list_view_guests.pug
-    - widget__expandable = true
     include Items/list_view/list_view_rooms.pug
     - widget__expandable = true
     include Items/more_options/more_options.pug
-    - widget__expandable = true
-    include Items/more_options/more_options.pug
+    include Items/accessable/accessable.pug
+    include Items/checkbox_buttons/checkbox_buttons.pug
+
   
   content
     p some content

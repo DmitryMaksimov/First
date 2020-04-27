@@ -1,0 +1,71 @@
+.checkbox__label,
+.checkboxEx__label {
+  display: flex;
+  flex-wrap: nowrap;
+
+
+  margin-top: 5px;
+
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: flex-start;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  cursor: pointer;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+
+  color: rgba(31, 32, 65, 0.5);
+}
+
+.checkbox__input,
+.checkboxEx__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox__checkmark,
+.checkboxEx__checkmark {
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+
+  margin-top: -2px;
+  margin-right: 5px;
+
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  border-radius: 4px;  
+}
+
+.checkbox__input:checked + *,
+.checkboxEx__input:checked + * {
+  background: url('../../images/SVG/checkbox.svg') no-repeat;
+  border: 1px solid #BC9CFF;
+  background-position-x: 4px;
+  background-position-y: 3px;
+}
+
+.checkboxEx__label {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+
+  color: rgba(31, 32, 65, 0.75);
+}
+
+.checkboxEx__footer {
+  margin-left: 25px;
+}

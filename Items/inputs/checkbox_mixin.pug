@@ -1,0 +1,16 @@
+
+mixin checkbox(value, checked=null, name=null, id=null)
+  if(checked)
+     - checked="checked"
+  label.checkbox__label !{value}
+    input(type="checkbox", name=name, id=id, checked=checked).checkbox__input
+    div.checkbox__checkmark
+
+mixin checkboxEx(value, subvalue, checked=null, name=null, id=null)
+  if(checked)
+     - checked="checked"
+  label.checkboxEx__label !{value}
+    input(type="checkbox", name=name, id=id, checked=checked).checkboxEx__input
+    div.checkboxEx__checkmark
+  div.checkboxEx__footer !{subvalue}
+    
