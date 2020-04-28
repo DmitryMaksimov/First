@@ -17,6 +17,10 @@ append head
   link(rel="stylesheet", href="Items/list_view/list_view.scss")
   script(type="text/javascript" src='Items/list_view/list_view.js')
 
+  //стили и скрипты для круговой диаграммы
+  link(rel="stylesheet", href="Items/chart_view/chart_view.scss")
+  script(type="text/javascript" src='Items/chart_view/chart_view.js')
+
   //стили и скрипты для простых элементов
   link(rel="stylesheet", href="Items/inputs/checkbox.scss")
 
@@ -46,21 +50,7 @@ block content
     p some content
     p some content
     p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
-    p some content
+    include Items/chart_view/chart_view.pug
     p some content
     p some content
     p some content

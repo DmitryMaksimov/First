@@ -1,0 +1,53 @@
+
+.chart_view__pie_container {
+  width: 120px;
+  height: 120px;
+}
+
+.chart_view__pie_caption {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+
+  text-align: center;
+
+  color: #BC9CFF;
+
+}
+
+.chart_view__pie_caption2 {
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+
+.chart_view__pie_slice_biggest {
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.chart_view__pie_border {
+  border-radius: 50%;
+  background: white;
+}
+
+.chart_view__pie_slice_triangle {
+  transform-origin: center bottom;
+  overflow: hidden;
+}
+
+.chart_view__pie_slice_circle {
+  height: 100%;
+  width: 100%;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transform-origin: center bottom;
+}

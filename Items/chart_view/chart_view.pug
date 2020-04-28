@@ -1,0 +1,18 @@
+
+mixin chart_view__create(caption1, caption2, value_color_arr, border_width = null)
+  div(id="test" values=value_color_arr, border_width=border_width).chart_view__pie_container
+    div.chart_view__pie_caption
+      div.chart_view__pie_caption1 !{caption1}
+      div.chart_view__pie_caption2 !{caption2}
+
+- 
+  var vc = [
+    {value: 88, color1: '#BC9CFF', color2: '#8BA4F9'},
+    {value: 2, color1: 'white', color2: 'white'},
+    {value: 88, color1: '#6FCF97', color2: '#66D2EA'},
+    {value: 2, color1: 'white', color2: 'white'},
+    {value: 0, color1: '#FFE39C', color2: '#FFBA9C'},
+    {value: 2, color1: 'white', color2: 'white'}]
+
+h2 Впечатления от номера
++chart_view__create('260','голосов', vc, 4)
