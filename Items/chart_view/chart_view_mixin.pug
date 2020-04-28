@@ -1,0 +1,6 @@
+
+mixin chart_view__create(caption1, caption2, value_color_arr, border_width = null)
+  div(id="test" values=value_color_arr, border_width=border_width).chart_view__pie_container
+    div.chart_view__pie_caption
+      div.chart_view__pie_caption1 !{caption1}
+      div.chart_view__pie_caption2 !{caption2}
