@@ -1,3 +1,4 @@
+
 window.addEventListener('load', function (event) {
 
   var chart = document.querySelectorAll('.chart_view__pie_container');
@@ -27,7 +28,7 @@ window.addEventListener('load', function (event) {
         var div = document.createElement('div');
         div.className = 'chart_view__pie_slice_biggest';
   
-        chart[i].childNodes[0].before(div);
+        chart[i].insertBefore(div, chart[i].childNodes[0]);
         
         div.style.width = chart[i].clientWidth + 'px';
         div.style.height = chart[i].clientHeight + 'px';
@@ -40,7 +41,7 @@ window.addEventListener('load', function (event) {
         div.className = 'chart_view__pie_slice_triangle';
 
         if(lastchild != null)
-          lastchild.before(div);
+          chart[i].insertBefore(div, lastchild);
         else
           chart[i].appendChild(div);
 
@@ -70,7 +71,7 @@ window.addEventListener('load', function (event) {
       div.className = 'chart_view__pie_border';
 
       if(lastchild != null)
-        lastchild.before(div);
+        chart[i].insertBefore(div, lastchild);
       else
         chart[i].appendChild(div);
   
