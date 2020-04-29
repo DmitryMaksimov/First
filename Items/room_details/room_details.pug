@@ -9,4 +9,8 @@ include ../chart_view/chart_view_mixin.pug
     {value: 2, color1: 'white', color2: 'white'}]
 
 
-+chart_view__create('260','голосов', vc, 4)
+div.chart_view__pie_container 
+  div(style="--offset: 45; --value: 45").chart_view__pie_segment
+
+//+chart_view__create('260','голосов', vc, 4)
+

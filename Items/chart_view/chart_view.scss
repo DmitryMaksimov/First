@@ -2,7 +2,44 @@
 .chart_view__pie_container {
   width: 120px;
   height: 120px;
+
+  position: relative;
+
+
+  //overflow: hidden;
+
+  border-radius: 50%;
 }
+
+
+.chart_view__pie_segment {
+  height: 100%;
+  width: 100%;
+
+  border: 1px solid black;
+
+  position: absolute;
+  transform: translate(0, -50%) rotate(90deg) rotate(var( --offset , 0 ) + 1deg);
+  transform-origin: 50% 100%;
+
+  //overflow: hidden;
+}
+
+
+.chart_view__pie_segment:before {
+  border: 5px solid black;
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: translate(0, 100%) rotate(calc( var( --value , 45 ) * 1deg));
+  transform-origin: 50% 0;
+
+  background: linear-gradient(0deg, red 40%, blue 40%, blue 60%, green 60%);
+  background-size: 100% 50%;
+
+}
+
 
 .chart_view__pie_caption {
   width: 100%;
