@@ -6,6 +6,48 @@
   border: 1px solid black;
 }
 
+.room_details__content_left {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid black;
+}
+
+.room_details__order {
+  display: flex;
+  flex-flow: column;
+  width: 380px;
+
+  padding: 20px;
+
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.room_details__order_caption {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
+}
+
+.room_details__order_caption span {
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #BC9CFF;
+}
+
+
+.room_details__order_caption label {
+  margin-left: auto;
+  color: rgba(31, 32, 65, 0.5);
+
+  font-weight: bold;
+  font-size: 14px;  
+}
 
 .room_details__history {
   list-style-type: none;
@@ -13,6 +55,51 @@
   margin-left: 30px;
   font-size: 14px;
   line-height: 24px;  
+}
+
+.room_details__calc {
+  display: flex;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+
+}
+
+.room_details__total_table {
+  font-size: 14px;
+  line-height: 28px;
+}
+
+.room_details__info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+
+  font-weight: bold;
+  font-size: 12px;
+  color: rgba(31, 32, 65, 0.25);
+
+  cursor: pointer;
+}
+
+.room_details__sub_total {
+  text-align: right;
+}
+
+.room_details__total_space {
+  flex-grow: 1;
+  align-self: center;
+  border-bottom: 1px dashed black;
+  height: 10px;
 }
 
 .room_details__history li:before {

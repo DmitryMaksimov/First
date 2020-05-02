@@ -10,17 +10,47 @@ include ../chart_view/chart_view_mixin.pug
 
 
 div.room_details__content
-  div.room_details__left
-    h2 Сведения о номере
-  div.room_details__right
-    h2 Впечатления от номера
-    div
-      div.room_details__left
-        +chart_view__create('260','голосов', vc)
-      div.room_details__right
-        ul.room_details__history
-          li Великолепно
-          li Хорошо
-          li Удовлетворительно
-          li Разочарован
+  div.room_details__content_left
+    div.room_details__left
+      h2 Сведения о номере
+    div.room_details__right
+      h2 Впечатления от номера
+      div
+        div.room_details__left
+          +chart_view__create('260','голосов', vc)
+        div.room_details__right
+          ul.room_details__history
+            li Великолепно
+            li Хорошо
+            li Удовлетворительно
+            li Разочарован
+  div.room_details__content_right
+    div.room_details__order
+      div.room_details__order_caption
+        h1 №888 
+        span люкс
+        label#price 9 990₽ в сутки
+      include ../date_picker/date_picker_filter.pug
+      include ../list_view/list_view_guests.pug
 
+      table.room_details__total_table
+        tr
+          td 9 990₽ х 4 суток
+          td
+            label.room_details__info i
+          td.room_details__sub_total 39 960₽
+        tr 
+          td Сбор за услуги: скидка 2 179₽
+          td
+            label.room_details__info i
+          td.room_details__sub_total 0₽
+        tr
+          td Сбор за дополнительные услуги
+          td
+            label.room_details__info i
+          td.room_details__sub_total 300₽
+
+      div.room_details__calc
+        div.room_details__total_caption Итого
+        div.room_details__total_space
+        div.room_details__total 38 081₽
