@@ -4,3 +4,39 @@ mixin chart_view__create(caption1, caption2, value_color_arr, border_width = nul
     div.chart_view__pie_caption
       div.chart_view__pie_caption1 !{caption1}
       div.chart_view__pie_caption2 !{caption2}
+
+mixin chart_view__create(caption1, caption2, value_color_arr, border_width = null)
+  - var zero = 360
+  - var offset = 0
+  - var biggest_offset = 0
+  - var biggest_color1 = "transparent";
+  - var biggest_color2 = "transparent";
+
+  each val in value_color_arr
+    - zero-= val.value
+
+  each val in value_color_arr
+    if val.value == 0
+      - val.value= zero
+    if(val.value > 180)
+      - biggest_color1 = val.color1
+      - biggest_color2 = val.color2
+      - biggest_offset = offset
+    - offset += val.value
+
+  -offset = 0
+
+  div(id="test" values=value_color_arr, border_width=border_width style="\
+    background: linear-gradient( " + (biggest_offset + 90) + "deg, " + biggest_color1 + " 0%, " + biggest_color2 + " 50%, " + biggest_color1 + " 100% )").chart_view__pie_container
+    each val in value_color_arr
+
+      if val.value <= 180
+        div(style="transform-origin: 50% 100%; transform: translate(0, -50%) rotate(90deg) rotate(" + offset + "deg);").chart_view__pie_segment 
+          div(style="transform-origin: 50% 0%; transform: translate(0, 100%) rotate(" + val.value + "deg);\
+          background: linear-gradient( 0deg, " + val.color1 + " 50%, " + val.color2 + " 100% )").chart_view__pie_segment 
+
+      - offset+= val.value
+
+    div.chart_view__pie_caption
+      div.chart_view__pie_caption1 !{caption1}
+      div.chart_view__pie_caption2 !{caption2}

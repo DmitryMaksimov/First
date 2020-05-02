@@ -1,16 +1,23 @@
 include ../chart_view/chart_view_mixin.pug
 - 
   var vc = [
-    {value: 88, color1: '#BC9CFF', color2: '#8BA4F9'},
+    {value: 80, color1: '#BC9CFF', color2: '#8BA4F9'},
     {value: 2, color1: 'white', color2: 'white'},
-    {value: 88, color1: '#6FCF97', color2: '#66D2EA'},
+    {value: 80, color1: '#6FCF97', color2: '#66D2EA'},
     {value: 2, color1: 'white', color2: 'white'},
     {value: 0, color1: '#FFE39C', color2: '#FFBA9C'},
     {value: 2, color1: 'white', color2: 'white'}]
 
+- 
+  var vc2 = [
+    {value: 170, color1: 'red', color2: 'blue'},
+    {value: 2, color1: 'white', color2: 'white'},
+    {value: 14, color1: 'red', color2: 'blue'},
+    {value: 2, color1: 'white', color2: 'white'},
+    {value: 0, color1: 'red', color2: 'blue'},
+    {value: 2, color1: 'white', color2: 'white'}]
 
-div.chart_view__pie_container 
-  div(style="--offset: 45; --value: 45").chart_view__pie_segment
 
-//+chart_view__create('260','голосов', vc, 4)
+
++chart_view__create('260','голосов', vc2, 4)
 

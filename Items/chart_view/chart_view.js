@@ -1,5 +1,5 @@
 
-window.addEventListener('load', function (event) {
+window.addEventListener('load1', function (event) {
 
   var chart = document.querySelectorAll('.chart_view__pie_container');
 
