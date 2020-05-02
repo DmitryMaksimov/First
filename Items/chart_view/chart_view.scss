@@ -14,7 +14,6 @@
 
 
 .chart_view__pie_segment {
-//  border: 1px solid red;
   height: 100%;
   width: 100%;
 
@@ -22,13 +21,21 @@
   overflow: hidden;
 }
 
-
-
-.chart_view__pie_caption {
+.chart_view__pie_caption_before {
   width: 100%;
   height: 100%;
-
   position: absolute;
+  padding: 4px;
+}
+
+.chart_view__pie_caption {
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+
+  border-radius: 50%;
+
+
+  background: white;
 
   display: flex;
   flex-direction: column;
@@ -51,26 +58,4 @@
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
-}
-
-.chart_view__pie_slice_biggest {
-  border-radius: 50%;
-  box-sizing: border-box;
-}
-
-.chart_view__pie_border {
-  border-radius: 50%;
-  background: white;
-}
-
-.chart_view__pie_slice_triangle {
-  transform-origin: center bottom;
-  overflow: hidden;
-}
-
-.chart_view__pie_slice_circle {
-  height: 100%;
-  width: 100%;
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  transform-origin: center bottom;
 }

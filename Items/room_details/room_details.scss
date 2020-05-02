@@ -1,0 +1,41 @@
+.room_details__content {
+  margin-top: 21px;
+
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid black;
+}
+
+
+.room_details__history {
+  list-style-type: none;
+
+  margin-left: 30px;
+  font-size: 14px;
+  line-height: 24px;  
+}
+
+.room_details__history li:before {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  content: "";
+  border-radius: 50%;
+}
+
+.room_details__history li:nth-of-type(1):before {
+  background: linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%);
+}
+
+.room_details__history li:nth-of-type(2):before {
+  background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+}
+
+.room_details__history li:nth-of-type(3):before {
+  background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+}
+
+.room_details__history li:nth-of-type(4):before {
+  background: linear-gradient(180deg, #909090 0%, #3D4975 100%);
+}

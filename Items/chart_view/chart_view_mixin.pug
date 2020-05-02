@@ -5,7 +5,7 @@ mixin chart_view__create(caption1, caption2, value_color_arr, border_width = nul
       div.chart_view__pie_caption1 !{caption1}
       div.chart_view__pie_caption2 !{caption2}
 
-mixin chart_view__create(caption1, caption2, value_color_arr, border_width = null)
+mixin chart_view__create(caption1, caption2, value_color_arr)
   - var zero = 360
   - var offset = 0
   - var biggest_offset = 0
@@ -26,7 +26,7 @@ mixin chart_view__create(caption1, caption2, value_color_arr, border_width = nul
 
   -offset = 0
 
-  div(id="test" values=value_color_arr, border_width=border_width style="\
+  div(values=value_color_arr, border_width=border_width style="\
     background: linear-gradient( " + (biggest_offset + 90) + "deg, " + biggest_color1 + " 0%, " + biggest_color2 + " 50%, " + biggest_color1 + " 100% )").chart_view__pie_container
     each val in value_color_arr
 
@@ -36,7 +36,7 @@ mixin chart_view__create(caption1, caption2, value_color_arr, border_width = nul
           background: linear-gradient( 0deg, " + val.color1 + " 50%, " + val.color2 + " 100% )").chart_view__pie_segment 
 
       - offset+= val.value
-
-    div.chart_view__pie_caption
-      div.chart_view__pie_caption1 !{caption1}
-      div.chart_view__pie_caption2 !{caption2}
+    div.chart_view__pie_caption_before
+      div.chart_view__pie_caption
+        div.chart_view__pie_caption1 !{caption1}
+        div.chart_view__pie_caption2 !{caption2}

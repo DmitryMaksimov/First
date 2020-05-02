@@ -1,23 +1,26 @@
 include ../chart_view/chart_view_mixin.pug
 - 
   var vc = [
-    {value: 80, color1: '#BC9CFF', color2: '#8BA4F9'},
+    {value: 88, color1: '#BC9CFF', color2: '#8BA4F9'},
     {value: 2, color1: 'white', color2: 'white'},
-    {value: 80, color1: '#6FCF97', color2: '#66D2EA'},
+    {value: 88, color1: '#6FCF97', color2: '#66D2EA'},
     {value: 2, color1: 'white', color2: 'white'},
     {value: 0, color1: '#FFE39C', color2: '#FFBA9C'},
     {value: 2, color1: 'white', color2: 'white'}]
 
-- 
-  var vc2 = [
-    {value: 170, color1: 'red', color2: 'blue'},
-    {value: 2, color1: 'white', color2: 'white'},
-    {value: 14, color1: 'red', color2: 'blue'},
-    {value: 2, color1: 'white', color2: 'white'},
-    {value: 0, color1: 'red', color2: 'blue'},
-    {value: 2, color1: 'white', color2: 'white'}]
 
-
-
-+chart_view__create('260','голосов', vc2, 4)
+div.room_details__content
+  div.room_details__left
+    h2 Сведения о номере
+  div.room_details__right
+    h2 Впечатления от номера
+    div
+      div.room_details__left
+        +chart_view__create('260','голосов', vc)
+      div.room_details__right
+        ul.room_details__history
+          li Великолепно
+          li Хорошо
+          li Удовлетворительно
+          li Разочарован
 
