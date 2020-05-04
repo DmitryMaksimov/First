@@ -13,6 +13,7 @@ block rcaption
 
 block content
   div.date_picker__filter
-    +date_picker(true)
-    +date_picker(true, true)
+    +date_picker(true, null, onchange)
+    +date_picker(true, true, onchange)
+  - onchange = null
       
