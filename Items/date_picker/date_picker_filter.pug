@@ -12,8 +12,8 @@ block rcaption
   h3 Выезд
 
 block content
-  div.date_picker__filter
-    +date_picker(true, null, onchange)
-    +date_picker(true, true, onchange)
+  div(onchange=onchange).date_picker__filter
+    +date_picker(true, null, "date_picker_filter__selected_from(this)")
+    +date_picker(true, true, "date_picker_filter__selected_to(this)")
   - onchange = null
       

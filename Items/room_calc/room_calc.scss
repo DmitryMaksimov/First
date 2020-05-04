@@ -1,0 +1,85 @@
+
+.room_calc__order {
+  display: flex;
+  flex-flow: column;
+  width: 380px;
+
+  padding: 20px;
+
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.room_calc__order_caption {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
+}
+
+.room_calc__order_caption span {
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #BC9CFF;
+}
+
+
+.room_calc__order_caption label {
+  margin-left: auto;
+  color: rgba(31, 32, 65, 0.5);
+
+  font-weight: bold;
+  font-size: 14px;  
+}
+
+
+.room_calc__total_table {
+  font-size: 14px;
+  line-height: 28px;
+  width: 100%;
+}
+
+.room_calc__info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+
+  font-weight: bold;
+  font-size: 12px;
+  color: rgba(31, 32, 65, 0.25);
+
+  cursor: pointer;
+}
+
+.room_calc__sub_total {
+  text-align: right;
+}
+
+
+.room_calc__total {
+  display: flex;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+
+}
+
+.room_calc__total_space {
+  flex-grow: 1;
+  align-self: center;
+  border-bottom: 1px dashed rgba(31, 32, 65, 0.25);
+  height: 10px;
+}

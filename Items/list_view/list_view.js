@@ -47,13 +47,8 @@ window.list_view__update_caption = function(element) {
   var total = 0;
   var captionText = "";
 
-  if(element.attributes['short'] != null) {
-    for(var i=0; i<element.values.length; i++)
-      total += element.values[i];
-    captionText = total + " " + list_view__declOfNum(total, JSON.parse(element.attributes['short'].value));
-  } else {
-    for(var i=0; i<element.values.length; i++) {
-      total += element.values[i];
+  for(var i=0; i<element.values.length; i++) {
+    if(element.decls[i].length > 0) {
       if(element.values[i] <= 0)
         continue;
       var append = element.values[i] + " " + list_view__declOfNum(element.values[i], element.decls[i]);
@@ -62,16 +57,23 @@ window.list_view__update_caption = function(element) {
         captionText = append;
       else
         captionText += ", " + append;
-    }
+    } else
+      total += element.values[i];
+  }
+  if(total > 0) {
+    if(captionText == "")
+      captionText = total + " " + list_view__declOfNum(total, JSON.parse(element.attributes['other_decls'].value));
+    else
+      captionText = total + " " + list_view__declOfNum(total, JSON.parse(element.attributes['other_decls'].value)) + ", " + captionText;
   }
 
   if(caption.tagName.toUpperCase() == 'INPUT') {
-    if(total == 0)
+    if(captionText == "")
       caption.value = element.caption;
     else
       caption.value = captionText;
   } else {
-    if(total == 0)
+    if(captionText == "")
       caption.innerText = element.caption;
     else
       caption.innerText = captionText;

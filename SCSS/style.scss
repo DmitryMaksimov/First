@@ -154,6 +154,37 @@ input {
   flex-wrap: wrap;
 }
 
+[data-title] {
+  position: relative;
+}
+
+[data-title]::after {
+  position: absolute;
+
+  min-width: 300px;
+  z-index: 1;
+  right: 0%;
+
+  background: rgba(255,255,255,0.9);
+  content: attr(data-title);
+  opacity: 0;
+
+  pointer-events: none;
+
+  padding: 20px;
+
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transition: 0.5s;
+}
+
+[data-title]:hover::after {
+  opacity: 1;
+}
+
 #subscribe > div {
   display: flex;
   flex-wrap: nowrap;
@@ -180,36 +211,6 @@ input {
 
 aside {
   padding: 4px;
-}
-
-#amount {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-
-  margin-left: auto;
-  /* identical to box height */
-
-  text-align: right;
-
-  /* Dark 50% */
-
-  color: rgba(31, 32, 65, 0.5);
-}
-
-.widget_footer {
-
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  /* identical to box height, or 117% */
-  
-  
-  /* Dark 50% */
-  
-  color: rgba(31, 32, 65, 0.5);  
 }
 
 .left_menu {
