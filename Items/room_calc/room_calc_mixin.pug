@@ -1,0 +1,32 @@
+mixin room_calc(price, service = 0, addition = 0)
+  div(price=price, service=service, addition=addition).room_calc__order
+    div.room_calc__order_caption
+      p №&nbsp;  
+      h1 888
+      span люкс
+      label.room_calc__price 
+    - onchange = 'room_calc__date_changed(this)'
+    include ../date_picker/date_picker_filter.pug
+    include ../list_view/list_view_guests.pug
+
+    table.room_calc__total_table
+      tr
+        td.room_calc__days #{price}₽ х 1 суток
+        td
+        td.room_calc__sub_total #{price}₽
+      tr
+        td.room_calc__service_title Сбор за услуги
+        td(data-title='На нашем портале скидок нет, только наценки.')
+          label.room_calc__info i
+        td.room_calc__sub_total #{price + addition}₽
+      tr
+        td Сбор за дополнительные услуги
+        td(data-title="Чай, кофе, печеньки...")
+          label.room_calc__info i
+        td.room_calc__sub_total #{addition}₽
+
+    div.room_calc__total
+      div.room_calc__total_caption Итого
+      div.room_calc__total_space
+      div.room_calc__total_value 0₽
+    button Забронировать

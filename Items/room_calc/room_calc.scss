@@ -4,7 +4,8 @@
   flex-flow: column;
   width: 380px;
 
-  padding: 20px;
+  padding: 30px;
+  padding-top: 40px;
 
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.12);
@@ -13,34 +14,53 @@
   border-radius: 4px;
 }
 
-.room_calc__order_caption {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
 
-}
-
-.room_calc__order_caption span {
-  font-weight: bold;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #BC9CFF;
-}
-
-
-.room_calc__order_caption label {
+.room_calc__price {
   margin-left: auto;
   color: rgba(31, 32, 65, 0.5);
 
+  font-size: 12px;  
+}
+
+.room_calc__price b{
   font-weight: bold;
   font-size: 14px;  
 }
 
 
+
+.room_calc__order_caption {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
+  margin-bottom: -5px;
+
+  font-size: 12px;
+}
+
+.room_calc__order_caption p {
+  font-size: 14;
+  font-weight: bold;
+}
+.room_calc__order_caption span {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #BC9CFF;
+}
+
 .room_calc__total_table {
   font-size: 14px;
-  line-height: 28px;
+  line-height: 20px;
   width: 100%;
+  margin-top: 2px;
+  margin-bottom: 30px;
+}
+
+.room_calc__total_table td {
+  padding-top: 13px;
 }
 
 .room_calc__info {
@@ -63,18 +83,18 @@
 
 .room_calc__sub_total {
   text-align: right;
+  min-width: 75px;
 }
 
 
 .room_calc__total {
   display: flex;
 
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
-
+  font-family: 'Open Sans';
+  font-weight: bold;
+  font-size: 19px;
+  
+  color: #1F2041;
 }
 
 .room_calc__total_space {
@@ -82,4 +102,41 @@
   align-self: center;
   border-bottom: 1px dashed rgba(31, 32, 65, 0.25);
   height: 10px;
+}
+
+.room_calc__order button {
+  margin-top: 22px;
+  border-radius: 14px;
+  height: 44px;
+
+  padding-left: 24px;
+
+  background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+
+  border: none;
+  border-radius: 22px;
+
+  font-family: Montserrat;
+  font-weight: bold;
+  font-size: 12px;
+
+  line-height: 24px;
+
+  text-transform: uppercase;
+
+  color: white;
+}
+
+.room_calc__order button::after {
+  content: '';
+  float: right;
+
+  font-family: Material Icons;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+}
+
+.room_calc__order button:hover {
+  opacity: 0.7;
 }
