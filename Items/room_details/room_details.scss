@@ -8,6 +8,7 @@
 
 .room_details__content_left {
   display: flex;
+  flex-grow: 1;
   align-items: flex-start;
   border: 1px solid black;
 }

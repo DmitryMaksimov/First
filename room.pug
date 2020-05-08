@@ -5,10 +5,6 @@ append head_links
   // стили для базового виджета
   link(rel="stylesheet", href="Items/widget/widget.scss")
 
-  //стили и скрипты для слайдера
-  link(rel="stylesheet", href="Items/double_slider_filter/double_slider_filter.scss")
-  script(type="text/javascript" src='Items/double_slider_filter/double_slider_filter.js')
-
   //стили и скрипты для ввода даты
   link(rel="stylesheet", href="Items/date_picker/date_picker.scss")
   script(type="text/javascript" src='Items/date_picker/date_picker.js')
@@ -31,19 +27,9 @@ append head_links
 
   script(type="text/javascript" src='scripts/index.js')
 
+block copyright
+
 block content
-  aside.left_menu
-
-    include Items/double_slider_filter/double_slider_filter.pug
-    include Items/date_picker/date_picker_filter.pug
-    include Items/date_picker/date_picker_filter2.pug
-    include Items/list_view/list_view_guests.pug
-    include Items/list_view/list_view_rooms.pug
-    - widget__expandable = true
-    include Items/more_options/more_options.pug
-    include Items/accessable/accessable.pug
-    include Items/checkbox_buttons/checkbox_buttons.pug
-
   content
     p some content
     p some content

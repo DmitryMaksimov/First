@@ -80,20 +80,18 @@
        url('../fonts/open-sans-v17-cyrillic-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-
 body {
-  display: inline-block;
-  
-  height: 100%;
+  min-width: min-content;
   width: 100%;
 
+  box-sizing: border-box;
+  
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: normal;
 	font-size: 12px;
 
   color: rgba(31, 32, 65, 0.75);
-  
 }
 
 h1 {
@@ -139,19 +137,26 @@ input {
   border-radius: 4px;
 }
 
-#content {
-  width: 100%;
+main {
   background: #FFFFFF;
+  box-sizing: border-box;
 }
 
 .content_wrapper
 {
-	width: $content_width;
-  margin-left: auto;
-	margin-right: auto;
-
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+
+	max-width: $content_width;
+  margin-left: auto;
+  margin-right: auto;
+  
+  box-sizing: border-box;
+}
+
+content {
+  flex-grow: 1;
+  box-sizing: border-box;
 }
 
 [data-title] {
@@ -206,7 +211,6 @@ input {
   font-family: inherit;
   font-style: inherit;
   font-weight: inherit;
-
 }
 
 aside {
@@ -219,9 +223,4 @@ aside {
 
   display: flex;
   flex-direction: column;
-}
-
-content {
-  margin-left: 28px;
-
 }

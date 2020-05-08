@@ -14,7 +14,7 @@ footer {
 .footer_wrapper {
   @include header__debug;
 
-  width: $content_width;
+  max-width: $content_width;
   margin-left: auto;
   margin-right: auto;
 
@@ -89,7 +89,7 @@ footer a:hover, footer a:active, footer a:focus {
 }
 
 .copyright_wrapper {
-  width: $content_width;
+  max-width: $content_width;
   min-height: $copyright_height;
 
   margin-left: auto;
