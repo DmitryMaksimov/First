@@ -1,5 +1,6 @@
 include ../chart_view/chart_view_mixin.pug
 include ../room_calc/room_calc_mixin.pug
+include ../reviews/review.pug
 - 
   var vc = [
     {value: 88, color1: '#BC9CFF', color2: '#8BA4F9'},
@@ -11,7 +12,8 @@ include ../room_calc/room_calc_mixin.pug
 
 mixin property(icon, caption, description)
   div.room_details__columns.room_details__property_description
-    img.room_details__property_icon(src='/images/icons/'+icon+'.svg')
+    div.room_details__property_icon
+      img(src='/images/icons/'+icon+'.svg')
     div.room_details__rows
       strong= caption
       p= description
@@ -28,7 +30,7 @@ div.room_details__columns
     div.room_details__rows.room_details__impressions
       h2 Впечатления от номера
       div.room_details__columns
-        div.room_details__rows
+        div(style='padding-bottom: 4px').room_details__rows
           +chart_view__create('260','голосов', vc)
         div(style='align-self: flex-end;').room_details__rows
           ul.room_details__history
@@ -38,5 +40,19 @@ div.room_details__columns
             li Разочарован
     div.room_details__rows.room_details__reviews
       h2 Отзывы посетителей номера
+      +review("murad", "Мурад Сарафанов", "5 дней назад", "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.", 12)
+      +review("patricia", "Патрисия Стёклышкова", "Неделю назад", "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.", 12, true)
+    div.room_details__rows.room_details__rules
+      h2 Правила
+      ul
+        li
+          div Нельзя с питомцами
+        li
+          div Без вечеринок и мероприятий
+        li
+          div Время прибытия - после 13:00, а выезд до 12:00
+    div.room_details__rows.room_details__canceling
+      h2 Отмена
+      p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
   div.room_details__right
     +room_calc(9990, -2179, 300)

@@ -140,10 +140,10 @@ input {
 main {
   background: #FFFFFF;
   box-sizing: border-box;
+  padding-bottom: 20px;
 }
 
-.content_wrapper
-{
+.content_wrapper {
   display: flex;
   flex-direction: row;
 
@@ -157,6 +157,10 @@ main {
 content {
   flex-grow: 1;
   box-sizing: border-box;
+}
+
+footer {
+  margin-top: 50px;
 }
 
 [data-title] {
