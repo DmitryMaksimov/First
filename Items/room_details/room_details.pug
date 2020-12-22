@@ -11,7 +11,7 @@ include ../room_calc/room_calc_mixin.pug
 
 mixin property(icon, caption, description)
   div.room_details__columns.room_details__property_description
-    p.room_details__property_icon= icon
+    img.room_details__property_icon(src='/images/icons/'+icon+'.svg')
     div.room_details__rows
       strong= caption
       p= description
@@ -20,11 +20,11 @@ div.room_details__columns
   div.room_details__columns.room_details__description_content
     div.room_details__rows.room_details__intelligence
       h2 Сведения о номере
-      +property('', 'Комфорт', 'Шумопоглощающие стены')
+      +property('insert_emoticon', 'Комфорт', 'Шумопоглощающие стены')
       div.room_details__property_space
-      +property('', 'Удобство', 'Окно в каждой из спален')
+      +property('location_city', 'Удобство', 'Окно в каждой из спален')
       div.room_details__property_space
-      +property('', 'Уют', 'Номер оснащён камином')
+      +property('whatshot', 'Уют', 'Номер оснащён камином')
     div.room_details__rows.room_details__impressions
       h2 Впечатления от номера
       div.room_details__columns

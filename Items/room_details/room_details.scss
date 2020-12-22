@@ -1,7 +1,7 @@
 .room_details__columns {
   display: flex;
   flex-direction: row;
-  border: 2px solid green;
+  //border: 2px solid green;
   box-sizing: border-box;
 }
 
@@ -9,8 +9,13 @@
   display: flex;
   flex-direction: column;
 
-  border: 1px solid black;
+  //border: 1px solid black;
   box-sizing: border-box;
+}
+
+.room_details__preview {
+  width: 100%;
+  padding-bottom: 70px;
 }
 
 .room_details__description_content {
