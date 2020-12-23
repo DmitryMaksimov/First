@@ -1,0 +1,33 @@
+extends includes/template.pug
+
+
+append head_links
+  // стили для базового виджета
+  link(rel="stylesheet", href="Items/widget/widget.scss")
+
+  //стили и скрипты для ввода даты
+  link(rel="stylesheet", href="Items/date_picker/date_picker.scss")
+  script(type="text/javascript" src='Items/date_picker/date_picker.js')
+
+  //стили и скрипты для сложных списков
+  link(rel="stylesheet", href="Items/list_view/list_view.scss")
+  script(type="text/javascript" src='Items/list_view/list_view.js')
+
+  //стили и скрипты для страницы
+  link(rel="stylesheet", href="SCSS/landing.scss")
+
+  script(type="text/javascript" src='scripts/index.js')
+
+block content
+  form.landing_control
+    h1 Найдем номера под ваши пожелания
+    include Items/date_picker/date_picker_filter.pug
+    include Items/list_view/list_view_guests.pug
+    a
+      .landing_control__find
+        span Подобрать номер
+        span 
+
+  p.landing_slogan Лучшие номера для вашей работы, <br/> отдыха и просто вдохновения
+
+    

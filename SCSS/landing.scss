@@ -1,0 +1,73 @@
+
+main {
+  background-image: url('/Images/landing.png');
+  background-size: cover;
+}
+
+footer {
+  border-top: none;
+  margin-top: 0px;
+}
+
+.content_wrapper {
+  flex-direction: column;
+}
+
+.landing_control {
+  margin-top: 140px;
+  margin-bottom: 70px;
+  padding: 30px;
+  padding-top: 40px;
+  width: 320px;
+  background-color: white;
+}
+
+.landing_control__find {
+  display: flex;
+  cursor: pointer;
+
+  width: 320px;
+  height: 44px;
+
+  margin-top: 32px;
+  border-radius: 22px;
+
+  align-items: center;
+
+  background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  color: white;
+
+}
+
+.landing_control__find span:nth-child(1) {
+  margin-left: 92px;
+}
+
+.landing_control__find span:nth-child(2) {
+  margin-left: auto;
+  margin-right: 10px;
+
+  font-weight: 400;
+  font-family: 'Material Icons';
+  font-size: 24px;
+}
+
+.landing_slogan {
+  margin-top: 248px;
+  margin-left: auto;
+
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: right;
+}

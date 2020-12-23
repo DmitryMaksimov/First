@@ -159,8 +159,9 @@ content {
   box-sizing: border-box;
 }
 
-footer {
-  margin-top: 50px;
+.__preview {
+  width: 100%;
+  padding-bottom: $header_height;
 }
 
 [data-title] {

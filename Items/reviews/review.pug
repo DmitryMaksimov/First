@@ -1,0 +1,16 @@
+mixin review(img, username, date, text, likes, inactive=false)
+  div.review
+    div.review__left
+      img(src="/images/profile/"+img+".png")
+      if inactive
+        .review__likes_wrapper.review__likes_wrapper_disabled
+          p.review__heart=""
+          p=likes
+      else
+        .review__likes_wrapper.review__likes_wrapper_enabled
+          p.review__heart=""
+          p=likes
+    div.review__content
+      p.review__username= username
+      p= date
+      p.review__text= text
