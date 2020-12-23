@@ -1,0 +1,35 @@
+mixin input_next(placeholder, alt, name="", id="", onclick="")
+  div.inputs__input
+    input(type="text", placeholder=placeholder, alt=alt, name=name)#id
+    a(href="", onclick=onclick) 
+
+mixin input(placeholder, alt, name="", id="")
+  div.inputs__input
+    input(type="text", placeholder=placeholder, alt=alt, name=name)#id
+
+mixin button(caption="", icon= "")
+  div(id=id).inputs__button
+    -if(icon != "")
+      div.inputs__button_icon
+    div.inputs__button_caption= caption
+    -if(icon != "")
+      div.inputs__button_icon= icon
+
+mixin button2(caption="", icon= "")
+  div(id=id).inputs__button2
+    -if(icon != "")
+      div.inputs__button_icon
+    div.inputs__button_caption= caption
+    -if(icon != "")
+      div.inputs__button_icon= icon
+
+mixin radio(caption="", name="")
+  label.inputs__radio=caption
+    input(type="radio", name=name)
+    span.inputs__radio_checkmark 
+
+mixin switch(name="")
+  label.inputs__switch
+    input(type="checkbox")
+    span.inputs__switch_slider.inputs__switch_round
+

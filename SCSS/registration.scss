@@ -1,0 +1,52 @@
+
+main {
+  background-image: url('/Images/registration.png');
+  background-size: cover;
+}
+
+footer {
+  border-top: none;
+  margin-top: 0px;
+}
+
+.content_wrapper {
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration_control {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 140px;
+  margin-bottom: 70px;
+  padding: 30px;
+  padding-top: 40px;
+  width: 320px;
+  background-color: white;
+
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+
+  border-radius: 4px;
+}
+
+.registration__sex {
+  display: flex;
+}
+
+.registration__sex > label {
+  padding-right: 20px;
+}
+
+.registration__row {
+  display: flex;
+  align-items: center;
+}
+
+.registration__to_right > :last-child {
+  margin-left: auto;
+  flex-basis: 100px;
+}

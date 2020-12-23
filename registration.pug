@@ -1,0 +1,58 @@
+extends includes/template.pug
+
+
+append head_links
+  // стили для базового виджета
+  link(rel="stylesheet", href="Items/widget/widget.scss")
+
+  //стили и скрипты для ввода даты
+  link(rel="stylesheet", href="Items/date_picker/date_picker.scss")
+  script(type="text/javascript" src='Items/date_picker/date_picker.js')
+
+  //стили и скрипты для ввода
+  link(rel="stylesheet", href="Items/inputs/input.scss")
+
+  //стили и скрипты для сложных списков
+  link(rel="stylesheet", href="Items/list_view/list_view.scss")
+  script(type="text/javascript" src='Items/list_view/list_view.js')
+
+  //стили и скрипты для страницы
+  link(rel="stylesheet", href="SCSS/registration.scss")
+
+  script(type="text/javascript" src='scripts/index.js')
+
+include Items/inputs/input.pug
+block content
+  form(method="get").registration_control
+    h1 Регистрация аккаунта
+    +spacerV("20px")
+    +input("Имя", "Укажите своё имя")
+    +spacerV("10px")
+    +input("Фамилия", "Укажите свою фамилию")
+    +spacerV("10px")
+    div.registration__sex
+      +radio("Мужчина", "sex")
+      +radio("Женщина", "sex")
+    +spacerV("15px")
+    h3 ДАТА РОЖДЕНИЯ
+    +spacerV("5px")
+    +input("ДД.ММ.ГГГГ", "Укажите свою дату рождения")
+    +spacerV("20px")
+    h3 ДАННЫЕ ДЛЯ ВХОДА В СЕРВИС
+    +spacerV("5px")
+    +input("e-mail", "Укажите свой e-mail")
+    +spacerV("10px")
+    +input("Пароль", "Придумайте пароль")
+    +spacerV("10px")
+    div.registration__row
+      +switch("email_me")
+      +spacerH("10px")
+      p Получать спецпредложения
+    +spacerV("24px")
+    +button("Перейти к оплате", "")
+    +spacerV("30px")
+    div.registration__row.registration__to_right
+      p Уже есть аккаунт на Toxin
+      +button2("Войти")
+
+    
