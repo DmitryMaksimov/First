@@ -1,0 +1,91 @@
+extends includes/template.pug
+
+
+append head_links
+  // стили для базового виджета
+  link(rel="stylesheet", href="Items/widget/widget.scss")
+
+  //стили и скрипты для слайдера
+  link(rel="stylesheet", href="Items/double_slider_filter/double_slider_filter.scss")
+  script(type="text/javascript" src='Items/double_slider_filter/double_slider_filter.js')
+
+  //стили и скрипты для ввода даты
+  link(rel="stylesheet", href="Items/date_picker/date_picker.scss")
+  script(type="text/javascript" src='Items/date_picker/date_picker.js')
+
+  //стили и скрипты для сложных списков
+  link(rel="stylesheet", href="Items/list_view/list_view.scss")
+  script(type="text/javascript" src='Items/list_view/list_view.js')
+
+  //стили и скрипты для круговой диаграммы
+  link(rel="stylesheet", href="Items/chart_view/chart_view.scss")
+  script(type="text/javascript" src='Items/chart_view/chart_view.js')
+
+  //стили и скрипты для простых элементов
+  link(rel="stylesheet", href="Items/inputs/checkbox.scss")
+
+  link(rel="stylesheet", href="SCSS/search.scss")
+
+  script(type="text/javascript" src='scripts/index.js')
+
+block content
+  aside.left_menu
+
+    include Items/date_picker/date_picker_filter2.pug
+    include Items/list_view/list_view_guests.pug
+    include Items/double_slider_filter/double_slider_filter.pug
+    include Items/checkbox_buttons/checkbox_buttons.pug
+    include Items/accessable/accessable.pug
+    include Items/list_view/list_view_rooms.pug
+    - widget__expandable = true
+    include Items/more_options/more_options.pug
+
+
+  mixin room(N, price=0, rating=0, reviews=0, lux=true)
+    .search__box
+      div(style="background-image: url('/Images/rooms/" + N + ".png')").search__box_images
+        div
+          p 
+          p 
+        div.search__box_images_dots
+          div.search__bot_images_dot.search__bot_images_dot_active
+          div.search__bot_images_dot
+          div.search__bot_images_dot
+          div.search__bot_images_dot
+      .search__box_details 
+        div.search__box_details_line.search__box_details_line_1
+          p.search__box_N № &nbsp;
+          p.search__box_number <b> !{N} &nbsp; <b>
+          p.search__box_lux !{lux? "люкс" : ""}
+          p.search__box_price !{price} ₽
+          p.search__box_edizm в&nbsp;сутки
+        div.search__box_details_line.search__box_details_line_2
+          div.search__rating
+            each i in [1,2,3,4,5]
+              = rating >= i? "" : ""
+          p <b>!{reviews}</b>&nbsp;Отзывов&nbsp;
+
+  content
+    h1 Номера, которые мы для вас подобрали
+    .search__table
+      +room(888, "9&nbsp;990", 5, 145)
+      +room(840, "9&nbsp;990", 4, 65)
+      +room(980, "8&nbsp;500", 3, 35)
+      +room(856, "7&nbsp;300", 5, 19)
+      +room(740, "6&nbsp;000", 4, 44)
+      +room(982, "5&nbsp;800", 3, 56)
+
+      +room(678, "5&nbsp;500", 5, 45)
+      +room(450, "5&nbsp;300", 4, 39)
+      +room(350, "5&nbsp;000", 3, 77)
+      +room(666, "5&nbsp;000", 5, 25)
+      +room(444, "5&nbsp;000", 3, 15)
+      +room(352, "5&nbsp;000", 3, 55)
+    div.search__pages
+      div.search__pages_.search__pages_current 1
+      div.search__pages_.search__pages_number 2
+      div.search__pages_.search__pages_number 3
+      div.search__pages_.search__pages_other ...
+      div.search__pages_.search__pages_number 15
+      div.search__pages_.search__pages_next 
+    div.search__pages_info 1 – 12 из 100+ вариантов аренды

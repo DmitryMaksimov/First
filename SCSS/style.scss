@@ -146,6 +146,7 @@ main {
 .content_wrapper {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 
 	max-width: $content_width;
   margin-left: auto;
@@ -154,9 +155,12 @@ main {
   box-sizing: border-box;
 }
 
+
+
 content {
   flex-grow: 1;
   box-sizing: border-box;
+  max-width: $content_width - 266;
 }
 
 .__preview {
@@ -218,14 +222,10 @@ content {
   font-weight: inherit;
 }
 
-aside {
-  padding: 4px;
-}
-
 .left_menu {
-  width: 270px;
-  margin-right: 28px;
+  width: 266px;
 
   display: flex;
   flex-direction: column;
+
 }

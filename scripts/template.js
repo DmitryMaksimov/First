@@ -1,3 +1,9 @@
+
+//24.12.2020 Начал изучение jquery
+var jquery = require("jquery");
+window.$ = window.jQuery = jquery; // notice the definition of global variables here
+require("jquery-ui-dist/jquery-ui.js");
+
 function OnResize() {
   /* Берем наш content */
   var content = document.querySelector('main');
