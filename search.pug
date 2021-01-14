@@ -42,28 +42,31 @@ block content
 
 
   mixin room(N, price=0, rating=0, reviews=0, lux=true)
-    .search__box
-      div(style="background-image: url('/Images/rooms/" + N + ".png')").search__box_images
-        div
-          p 
-          p 
-        div.search__box_images_dots
-          div.search__bot_images_dot.search__bot_images_dot_active
-          div.search__bot_images_dot
-          div.search__bot_images_dot
-          div.search__bot_images_dot
-      .search__box_details 
-        div.search__box_details_line.search__box_details_line_1
-          p.search__box_N № &nbsp;
-          p.search__box_number <b> !{N} &nbsp; <b>
-          p.search__box_lux !{lux? "люкс" : ""}
-          p.search__box_price !{price} ₽
-          p.search__box_edizm в&nbsp;сутки
-        div.search__box_details_line.search__box_details_line_2
-          div.search__rating
-            each i in [1,2,3,4,5]
-              = rating >= i? "" : ""
-          p <b>!{reviews}</b>&nbsp;Отзывов&nbsp;
+    form(id="form"+N, action="room.html")
+      input(type="hidden", name="N", value=N)
+      input(id="submit"+N, type="submit", value="", style="visibility: hidden" onclick="submit()")
+      div(onclick="submit"+N+".onclick()").search__box
+        div(style="background-image: url('/Images/rooms/" + N + ".png')").search__box_images
+          div
+            p 
+            p 
+          div.search__box_images_dots
+            div.search__bot_images_dot.search__bot_images_dot_active
+            div.search__bot_images_dot
+            div.search__bot_images_dot
+            div.search__bot_images_dot
+        .search__box_details 
+          div.search__box_details_line.search__box_details_line_1
+            p.search__box_N № &nbsp;
+            p.search__box_number <b> !{N} &nbsp; <b>
+            p.search__box_lux !{lux? "люкс" : ""}
+            p.search__box_price !{price} ₽
+            p.search__box_edizm в&nbsp;сутки
+          div.search__box_details_line.search__box_details_line_2
+            div.search__rating
+              each i in [1,2,3,4,5]
+                = rating >= i? "" : ""
+            p <b>!{reviews}</b>&nbsp;Отзывов&nbsp;
 
   content
     h1 Номера, которые мы для вас подобрали

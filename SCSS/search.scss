@@ -1,13 +1,29 @@
+@import "variables.scss";
+
+h1 {
+  font-weight: bold;
+  font-family:  Montserrat;
+}
 
 content {
   padding-left: 60px;
   margin-top: 29px;
+  max-width: $content_width - 266;
+}
+
+.left_menu {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 5px;
+
+  width: 266px;
 }
 
 .search__table {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 1px;
+  margin-top: 3px;
   justify-content: space-between;
 }
 
@@ -15,10 +31,11 @@ content {
   display: flex;
   flex-direction: column;
 
-  flex-basis: 270px;
-  height: 257px;
+  width: 270px;
+  height: 260px;
 
-  margin-top: 20px;
+  cursor: pointer;
+  margin-top: 0px;
 }
 
 .search__box_images {

@@ -160,7 +160,6 @@ main {
 content {
   flex-grow: 1;
   box-sizing: border-box;
-  max-width: $content_width - 266;
 }
 
 .__preview {
@@ -220,12 +219,4 @@ content {
   font-family: inherit;
   font-style: inherit;
   font-weight: inherit;
-}
-
-.left_menu {
-  width: 266px;
-
-  display: flex;
-  flex-direction: column;
-
 }

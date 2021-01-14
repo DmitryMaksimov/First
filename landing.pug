@@ -19,11 +19,15 @@ append head_links
   script(type="text/javascript" src='scripts/index.js')
 
 block content
-  form.landing_control
+  form(action="search.html")#search.landing_control
+    input#from(type="hidden", name="from")
+    input#to(type="hidden", name="to")
     h1 Найдем номера под ваши пожелания
+    - var onchange = "from.value = arguments[0].selection_from; to.value = arguments[0].selection_to;"
     include Items/date_picker/date_picker_filter.pug
     include Items/list_view/list_view_guests.pug
-    a
+    input#sub(type="submit", value="" onclick="submit()" style="visibility: hidden;")
+    a(onclick="sub.onclick()")
       .landing_control__find
         span Подобрать номер
         span 

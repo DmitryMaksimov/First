@@ -4,15 +4,16 @@
   "description": "",
   "main": "index.pug",
   "scripts": {
-    "build": "parcel build index.pug -d docs --public-url ./ --no-content-hash",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx parcel build landing.pug login.pug registration.pug room.pug search.pug -d docs --public-url ./ --no-content-hash",
+    "test": "npx parcel landing.pug login.pug registration.pug room.pug search.pug"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cssnano": "^4.1.10",
     "pug": "^2.0.4",
-    "sass": "^1.26.3"
+    "sass": "^1.32.4"
   },
   "dependencies": {
     "jquery": "^3.5.1",

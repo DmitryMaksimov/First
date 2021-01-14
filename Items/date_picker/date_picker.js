@@ -308,7 +308,7 @@ function date_picker__onresize() {
 window.date_picker_filter__selected_from = function (element) {
   element.parentElement.selection_from = element.selection_from;
   try {
-    element.parentElement.onchange(element);
+    element.parentElement.onchange(element.parentElement);
   } catch(e) {
 
   }
@@ -317,7 +317,7 @@ window.date_picker_filter__selected_from = function (element) {
 window.date_picker_filter__selected_to = function (element) {
   element.parentElement.selection_to = element.selection_from;
   try {
-    element.parentElement.onchange(element);
+    element.parentElement.onchange(element.parentElement);
   } catch(e) {
 
   }

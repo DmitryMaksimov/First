@@ -38,8 +38,8 @@ html
           +nav_item("Вакансии", "/")
           +nav_item("Новости", "/")
           +nav_item("Соглашения", "/", true)
-          +nav_item("Войти", "/", false,'header__item header__login')
-          +nav_item("Зарегистрироваться", "/", false, "header__item header__item_nomargin header__register")
+          +nav_item("Войти", "/login.pug", false,'header__item header__login')
+          +nav_item("Зарегистрироваться", "/registration.pug", false, "header__item header__item_nomargin header__register")
     main
       block pre_content
       div.content_wrapper
