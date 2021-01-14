@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.pug",
   "scripts": {
-    "build": "npx parcel build landing.pug login.pug registration.pug room.pug search.pug -d docs --public-url ./ --no-content-hash",
-    "test": "npx parcel landing.pug login.pug registration.pug room.pug search.pug"
+    "build": "npx parcel build index.pug login.pug registration.pug room.pug search.pug -d docs --public-url ./ --no-content-hash",
+    "test": "npx parcel index.pug login.pug registration.pug room.pug search.pug"
   },
   "keywords": [],
   "author": "",
